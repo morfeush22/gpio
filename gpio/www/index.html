@@ -30,6 +30,23 @@
         <title>Hello World</title>
     </head>
     <body>
+		<h2>Send:</h2>
+		<form id="emit" method='POST' action='#'>
+			<select id="pin">
+				<option value="17">17</option>
+				<option value="27">27</option>
+				<option value="22">22</option>
+			</select>
+			<select id="emit_data">
+				<option value="on">on</option>
+				<option value="off">off</option>
+			</select>
+			<input type="submit" value="Send"></div>
+		</form>
+
+		<h2>Receive:</h2>
+		<div id="log"></div>
+	
         <div class="app">
             <h1>PhoneGap</h1>
             <div id="deviceready" class="blink">
@@ -39,8 +56,27 @@
         </div>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript" src="js/socket.io.min.js"></script>
+		<script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript">
             app.initialize();
         </script>
+		
+		<script>
+			$(document).ready(function(){
+				namespace = '/gpio';
+				var socket = io.connect('http://' + 192.168.1.139 + ':' + 5000 + namespace);
+
+				socket.on('resp', function(msg) {
+					console.log("Rcv");
+					$('#log').append('<br>Pin No: ' + msg.count + ': ' + msg.data + 'to ' + msg.to);
+				});
+
+				$('form#emit').submit(function(event) {
+					socket.emit('pin_change', {data: $('#emit_data').val(), pin: $('#pin').val()});
+					return false;
+				});
+			});
+		</script>
     </body>
 </html>
