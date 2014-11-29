@@ -65,7 +65,7 @@
 		<script>
 			$(document).ready(function(){
 				namespace = '/gpio';
-				var socket = io.connect('http://' + 192.168.1.139 + ':' + 5000 + namespace);
+				var socket = io.connect('http://' + '192.168.1.139' + ':' + '5000' + namespace);
 
 				socket.on('resp', function(msg) {
 					console.log("Rcv");
