@@ -27,37 +27,53 @@
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile.min.css">
         <title>Hello World</title>
     </head>
     <body>
-		<h2>Send:</h2>
-		<form id="emit" method='POST' action='#'>
-			<select id="pin">
-				<option value="17">17</option>
-				<option value="27">27</option>
-				<option value="22">22</option>
-			</select>
-			<select id="emit_data">
-				<option value="on">on</option>
-				<option value="off">off</option>
-			</select>
-			<input type="submit" value="Send"></div>
-		</form>
 
-		<h2>Receive:</h2>
-		<div id="log"></div>
+        <div data-role="page" id="pageone">
+
+          <div data-role="header">
+            <h1>Insert Page Title Here</h1>
+          </div>
+
+          <div data-role="main" class="ui-content">
+            <h2>Send:</h2>
+            <form id="emit" method='POST' action='#'>
+                <select id="pin">
+                    <option value="17">17</option>
+                    <option value="27">27</option>
+                    <option value="22">22</option>
+                </select>
+                <select id="emit_data">
+                    <option value="on">on</option>
+                    <option value="off">off</option>
+                </select>
+                <input type="submit" value="Send">
+            
+
+                 <p><input data-role="flipswitch" name="flip-checkbox-1" id="flip-checkbox-1" checked="" type="checkbox"></p>
+                 <p><input data-role="flipswitch" name="flip-checkbox-2" id="flip-checkbox-2" checked="" type="checkbox"></p>
+                 <p><input data-role="flipswitch" name="flip-checkbox-3" id="flip-checkbox-3" checked="" type="checkbox"></p>
+            </form>
+
+            <h2>Receive:</h2>
+            <div id="log"></div>
+
+          </div>
+
+          <div data-role="footer">
+            <h1>Insert Footer Text Here</h1>
+          </div>
+
+        </div> 
 	
-        <div class="app">
-            <h1>PhoneGap</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
-        </div>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
 		<script type="text/javascript" src="js/socket.io.min.js"></script>
 		<script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/jquery.mobile.js"></script>
         <script type="text/javascript">
             app.initialize();
         </script>
@@ -68,7 +84,6 @@
 				var socket = io.connect('http://' + '192.168.1.139' + ':' + '5000' + namespace);
 
 				socket.on('resp', function(msg) {
-					console.log("Rcv");
 					$('#log').append('<br>Pin No: ' + msg.count + ': ' + msg.data + 'to ' + msg.to);
 				});
 
@@ -76,7 +91,30 @@
 					socket.emit('pin_change', {data: $('#emit_data').val(), pin: $('#pin').val()});
 					return false;
 				});
+
+                function sendPin(pinNo, obj) {
+                    if(obj.checked)
+                        socket.emit('pin_change', {data: "off", pin: pinNo});
+                    else
+                        socket.emit('pin_change', {data: "on", pin: pinNo});
+                    return false;
+                }
+
+                $("#flip-checkbox-1").on("change", function(event, ui) { 
+                    sendPin(17, this);
+                });
+
+                $("#flip-checkbox-2").on("change", function(event, ui) { 
+                    sendPin(27, this);
+                });  
+
+                $("#flip-checkbox-3").on("change", function(event, ui) { 
+                    sendPin(22, this);
+                });  
 			});
 		</script>
+        <script>
+            document.getElementById("flip-checkbox-1").checked = true;
+        </script>
     </body>
 </html>
