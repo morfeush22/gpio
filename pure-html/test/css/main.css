@@ -1,0 +1,61 @@
+body {
+}
+
+p.menu-title {
+	font-size: 300%;
+	margin-bottom: 10px;
+	display: block;
+}
+
+.single-row {
+	margin-bottom: 10px;
+	margin-left: 20px;
+	display: block;
+}
+
+.tile-button {
+	background: #000;
+	width: 15vw;
+	height: 15vw;
+	display: inline-block;
+	color: white;
+	float: left;
+	margin-right: 10px;
+}
+
+.cycle-slideshow {
+	display: inline-block;
+	height: 15vw;
+	overflow: hidden;
+}
+
+.first-order-menu {
+	display: block;
+	height: 15vw;
+	overflow: hidden;
+}
+
+.cycle-overlay {
+	background: none repeat scroll 0 0 black;
+	bottom: 0;
+	color: white;
+	font-family: tahoma, arial;
+	opacity: 0.5;
+	position: absolute;
+	padding: 15px;
+	width: 100%;
+	z-index: 600;
+}
+
+.cycle-slideshow > img {
+	width: 100%;
+	height: 100%;
+}
+
+.footer {
+	margin-top: 30px;
+}
+
+#temperature-menu, #lighting-menu, #blinds-menu {
+	display: none;
+}
