@@ -81,7 +81,7 @@
 		<script>
 			$(document).ready(function(){
 				namespace = '/gpio';
-				var socket = io.connect('http://' + '192.168.1.139' + ':' + '5000' + namespace);
+				var socket = io.connect('http://' + '192.168.1.140' + ':' + '5000' + namespace);
 
 				socket.on('resp', function(msg) {
 					$('#log').append('<br>Pin No: ' + msg.count + ': ' + msg.data + 'to ' + msg.to);
