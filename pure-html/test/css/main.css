@@ -3,18 +3,18 @@ body {
 
 p.menu-title {
 	font-size: 300%;
-	margin-bottom: 10px;
+	margin-bottom: 30px;
 	display: block;
 }
 
 .single-row {
-	margin-bottom: 10px;
+	margin-bottom: 20px;
 	margin-left: 20px;
 	display: block;
 }
 
 .tile-button {
-	background: #000;
+	background: orange;
 	width: 15vw;
 	height: 15vw;
 	display: inline-block;
@@ -26,17 +26,33 @@ p.menu-title {
 .cycle-slideshow {
 	display: inline-block;
 	height: 15vw;
-	overflow: hidden;
+}
+
+.temp-slider {
+	background: white;
+	height: 15vw;
+	display: inline-block;
+	color: white;
+	float: left;
+	margin-right: 60px !important;
+}
+
+.temp-tile {
+	margin-bottom: 30px;
+}
+
+.temperature-info {
+	display: inline-block;
+	height: 15vw;
 }
 
 .first-order-menu {
 	display: block;
 	height: 15vw;
-	overflow: hidden;
 }
 
 .cycle-overlay {
-	background: none repeat scroll 0 0 black;
+	background: transparent;
 	bottom: 0;
 	color: white;
 	font-family: tahoma, arial;
@@ -56,6 +72,10 @@ p.menu-title {
 	margin-top: 30px;
 }
 
-#temperature-menu, #lighting-menu, #blinds-menu {
+#temperature-menu, #lighting-menu, #blinds-menu, #help-message {
 	display: none;
+}
+
+img {
+	box-shadow: 2px 1px 1px #888888;
 }

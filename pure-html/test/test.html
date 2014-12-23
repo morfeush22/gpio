@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
+		<link rel="stylesheet" type="text/css" href="css/jquery-ui-slider-pips.css">
 		<link rel="stylesheet" type="text/css" href="css/main.css">
 
 		<script src="js/jquery/jquery.min.js"></script>
-		<script src="js/jquery/jquery.widget.min.js"></script>
+		<script src="js/jquery/jquery-ui.min.js"></script>
 		<script src="js/jquery/jquery.cycle2.min.js"></script>
-		<script src="js/jquery/jquery.cycle2.caption2.js"></script>
+		<script src="js/jquery/jquery.cycle2.caption2.min.js"></script>
+		<script src="js/jquery/jquery-ui-slider-pips.min.js"></script>
 		<script src="js/main/main.js"></script>
 	</head>
 	<body>
@@ -56,6 +59,30 @@
 		</div>
 
 		<div id="temperature-menu">
+			<p class="menu-title" id="temperature-menu-title">
+				<span>Check temperature?</span>
+			</p>
+			<div class="single-row temp-tile" id="temp-room-1">
+				<div class="temp-slider" id="test1"></div>
+				<div class="temperature-info">
+					<img src="images/1.jpg">
+				</div>
+			</div>
+			<div class="single-row temp-tile" id="temp-room-2">
+				<div class="temp-slider"></div>
+				<div class="temperature-info">
+					<img src="images/1.jpg">
+				</div>
+			</div>
+			<div class="single-row temp-tile" id="temp-room-3">
+				<div class="temp-slider"></div>
+				<div class="temperature-info">
+					<img src="images/1.jpg">
+				</div>
+			</div>
+			<div class="single-row back-main-menu-button">
+				<span>Back</span>
+			</div>
 		</div>
 
 		<div id="lighting-menu">
@@ -170,6 +197,10 @@
 			<div class="single-row back-main-menu-button">
 				<span>Back</span>
 			</div>
+		</div>
+
+		<div id="help-message">
+			<span>Help!</span>
 		</div>
 	</body>
 </html>

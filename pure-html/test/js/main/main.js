@@ -10,6 +10,11 @@ $(document).ready(function() {
 	}
 
 	function init() {
+		$('#temperature-menu-button').on('click', function() {
+			$('#main-menu').toggle("slide");
+			$('#temperature-menu').toggle("slide");
+		});
+
 		$('#lighting-menu-button').on('click', function() {
 			$('#main-menu').toggle("slide");
 			$('#lighting-menu').toggle("slide");
@@ -26,6 +31,27 @@ $(document).ready(function() {
 				$('#main-menu').toggle("slide");
 			});
 		});
+
+		$('.temp-slider').each(function() {
+			$(this).slider( {
+				min: 15,
+				max: 35,
+				step: 1,
+				orientation: "vertical"
+			}).slider("pips");
+		});
+
+		$('#help').on('click', function() {
+			$('#help-message').dialog( {
+				modal: true,
+				buttons: {
+					OK: function() {
+						$(this).dialog("close");
+					}
+				}
+			});
+		});
+
 	}
 	init();
 	switchButton();
