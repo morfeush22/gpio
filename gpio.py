@@ -18,9 +18,9 @@ thread = None
 GPIO.setmode(GPIO.BCM)
 
 pins = {
-	17 : {'name' : 'red', 'state' : GPIO.LOW},
-	27 : {'name' : 'yellow', 'state' : GPIO.LOW},
-	22 : {'name' : 'green', 'state' : GPIO.LOW}
+	17: {'room-name': 'light-room-1', 'state': GPIO.LOW},
+	27: {'room-name': 'light-room-2', 'state': GPIO.LOW},
+	22: {'room-name': 'light-room-3', 'state': GPIO.LOW}
 	}
 
 for pin in pins:
@@ -28,7 +28,9 @@ for pin in pins:
 	GPIO.output(pin, GPIO.LOW)
 
 @socketio.on('connect', namespace='/gpio')
-def test_connect():
+def initSync():
+	print("Client connected")
+	emit('initSync', pins)
 	return
 
 @socketio.on('disconnect', namespace='/gpio')
