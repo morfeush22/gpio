@@ -5,6 +5,7 @@ $(document).ready(function() {
 			var nextCycleContainer = $(this).next('.cycle-slideshow');
 			$(this).on('click', function() {
 				nextCycleContainer.cycle('next');
+				//nextCycleContainer.cycle('goto', 1);
 			});
 		});
 	}
