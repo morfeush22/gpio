@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-	namespace = '/gpio';
+	var namespace = '/gpio';
 	var socket = io.connect('http://' + '192.168.1.140' + ':' + '5000' + namespace);
 
 	var divAttributes = function(id) {
@@ -30,8 +30,8 @@ $(document).ready(function(){
 	socket.on('initSync', function(msg) {
 		$.each(msg, function(i, v) {
 
-			var roomName = v["room-name"];
-			var state = v["state"];
+			var roomName = i;
+			var state = v[1].overallState;
 
 			var $tileButton = $("<div>", {"class": "tile-button"})
 				.append("<span>Push me!</span>");
@@ -46,27 +46,29 @@ $(document).ready(function(){
 				.append($imgOff)
 				.append($imgOn);
 
-			var $backButton = $("<div>", {"class": "single-row back-main-menu-button"})
-				.append("<span>Back</span>");
-
 			var $div = $("<div>", divAttributes(roomName))
 				.append($tileButton)
 				.append($cycleSlideshow);
-				//.append($backButton);
 
 			$("#lighting-menu")
 				.children(".back-main-menu-button")
 				.before($div);
-			/*
-			$backButton.on('click', function() {
-				$(this).parent().toggle("slide");
-				$('#main-menu').toggle("slide");
-			});
-			*/
+
 			$cycleSlideshow.cycle();
 			$cycleSlideshow.cycle('goto', state);
 			//console.log(nextCycleContainer.data("cycle.opts").currSlide);
+
+			$tileButton.on('click', function() {
+				socket.emit('lightChange', {
+					"roomId": $div.attr("id"),
+					"state": $cycleSlideshow.data("cycle.opts").currSlide ? 0:1
+				});
+			});
 		});
+	});
+
+	socket.on('serverResponse', function(msg) {
+		$('#'+msg.roomId).children('.cycle-slideshow').cycle('goto', msg.state);
 	});
 
 });
