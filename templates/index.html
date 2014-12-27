@@ -9,9 +9,9 @@
 			namespace = '/gpio';
 			var socket = io.connect('http://' + document.domain + ':' + location.port + namespace);
 
-			socket.on('resp', function(msg) {
+			socket.on('serverResponse', function(msg) {
 				console.log("Rcv");
-				$('#log').append('<br>Pin No: ' + msg.count + ' ' + msg.data);
+				$('#log').append('<br>Pin change: ' + msg.roomId + ', state: ' + msg.state);
 			});
 		});
 	</script>
