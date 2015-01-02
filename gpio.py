@@ -29,6 +29,7 @@ for states in pins.itervalues():
 
 @socketio.on('connect', namespace='/gpio')
 def initSync():
+	print "Client connected!"
 	emit('initSync', pins)
 	return
 

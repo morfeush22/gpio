@@ -19,7 +19,15 @@
 var app = {
     // Application Constructor
     initialize: function() {
+        var self = this;
+
         this.bindEvents();
+
+        this.store = new Store();
+        this.socket = new Socket(this.store, function(states) {
+            self.route();
+        });      
+            
     },
     // Bind Event Listeners
     //
@@ -27,6 +35,7 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+        $(window).on("hashchange", $.proxy(this.route, this));
     },
     // deviceready Event Handler
     //
@@ -45,5 +54,68 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
+    },
+
+    registerEvents: function(hash) {
+        var self = this;
+
+        var matchAndCycle = function(elements, store) {
+            elements.each(function() {
+                var that = this;
+
+                $(this).cycle("goto", store.filter(function(item) {
+                    return item.elementId === $(that).parent().attr("id");
+                })[0].state);
+
+            });
+        };
+
+        var elements = $("body").find(".cycle-slideshow").each(function() {
+            $(this).cycle();
+        });
+
+        switch(hash) {
+            case "#temperature-menu":
+                matchAndCycle(elements, self.store.temperatureMenuElements);
+                break;
+            case "#lighting-menu":
+                matchAndCycle(elements, self.store.lightingMenuElements);
+                break;
+            case "#blinds-menu":
+                matchAndCycle(elements, self.store.blindsMenuElements);
+                break;
+            default:
+                matchAndCycle(elements, self.store.mainMenuElements);
+                $('#help').on('click', function() {
+                    console.log("Help pop-up!");
+                });
+        }
+
+        $("body").find(".tile-button").each(function() {
+            $(this).on("click", function() {
+                self.socket.registerEvents(this);
+            });
+        });
+    },
+
+    route: function() {
+        var hash = window.location.hash;
+
+        switch(hash) {
+            case "#temperature-menu":
+                $("body").html(new TemperatureMenuView(this.store.temperatureMenuElements).render().element);
+                break;
+            case "#lighting-menu":
+                $("body").html(new LightingMenuView(this.store.lightingMenuElements).render().element);
+                break;
+            case "#blinds-menu":
+                $("body").html(new BlindsMenuView(this.store.blindsMenuElements).render().element);
+                break;
+            default:
+                $("body").html(new MainMenuView(this.store.mainMenuElements).render().element);
+        }
+
+        this.registerEvents(hash);
     }
+
 };

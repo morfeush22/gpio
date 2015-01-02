@@ -73,7 +73,6 @@ p.menu-title {
 }
 
 #temperature-menu, #lighting-menu, #blinds-menu, #help-message {
-	display: none;
 }
 
 img {
