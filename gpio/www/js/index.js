@@ -17,24 +17,41 @@
  * under the License.
  */
 var app = {
-    // Application Constructor
-    initialize: function() {
-        var self = this;
+    startupDialog: function() {
 
-        this.bindEvents();
-
+        new StartupDialogView(app.onDeviceReady);
+        /*
+        $("#startup-dialog").dialog({
+            title: "jQuery Dialog Popup",
+            buttons: {
+                Close: function () {
+                    $(this).dialog("close");
+                    app.onDeviceReady();
+                }
+            }
+        });
+        */
+    },
+    setup: function() {
         this.store = new Store();
         this.socket = new Socket(this.store, function(states) {
-            self.route();
-        });      
-            
+            app.route();
+        });
+    },
+    // Application Constructor
+    initialize: function() {
+        $(document).ready(function() {
+            app.bindEvents();
+        });          
     },
     // Bind Event Listeners
     //
     // Bind any events that are required on startup. Common events are:
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
+        //document.addEventListener('deviceready', this.startupDialog, false);
+        this.startupDialog();
+
         $(window).on("hashchange", $.proxy(this.route, this));
     },
     // deviceready Event Handler
@@ -43,16 +60,10 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+        app.setup();
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
-
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
-
         console.log('Received Event: ' + id);
     },
 

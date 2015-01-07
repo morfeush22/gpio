@@ -16,6 +16,38 @@
         <title>GPIO</title>
     </head>
     <body>
+        <div id="startup-dialog" style="display: none">
+            <p class="validateTips">Please enter IP.</p>
+            <form>
+                 <fieldset>
+                    <label for="ip">IP</label>
+                    <input type="text" name="ip" id="ip" value=" " class="text ui-widget-content ui-corner-all">
+                    <!--
+                    <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+                    -->
+                </fieldset>
+            </form>
+        </div>
+
+        <script id="connect-tpl" type="text/x-handlebars-template">
+        //beautiful animation, conditionaly options menu open
+        </script>
+
+        <script id="reconnect-tpl" type="text/x-handlebars-template">
+        //beautiful animation and button refering to options menu
+        </script>
+
+        <script id="options-menu-tpl" type="text/x-handlebars-template">
+        //in constructor should be callback to get logging info
+        //regex for ip input
+        //tooltip for regex ;)
+        //back-button = window.back(), or sth like this
+            <div class="single-row back-button">Back</div>
+            <div class="menu-title" id="options-menu-title">Options</div>
+
+            <div class="footer">Footer</div>
+        </script>
+
     	<script id="main-menu-tpl" type="text/x-handlebars-template">
     		<div class="menu-title" id="main-menu-title">Hi! How can i help you?</div>
     		{{#each this}}
@@ -72,6 +104,7 @@
         <script type="text/javascript" src="js/views/BlindsMenuView.js"></script>
         <script type="text/javascript" src="js/views/LightingMenuView.js"></script>
         <script type="text/javascript" src="js/views/TemperatureMenuView.js"></script>
+        <script type="text/javascript" src="js/views/StartupDialogView.js"></script>
 
         <script type="text/javascript" src="js/socket/socket.io.js"></script>
 

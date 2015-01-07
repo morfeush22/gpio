@@ -37,6 +37,12 @@ def initSync():
 def test_disconnect():
 	return
 
+@socketio.on('syncReq', namespace='/gpio')
+def sync():
+	print "Sync!"
+	emit('sync', pins)
+	return
+
 @socketio.on('lightChange', namespace='/gpio')
 def handleLightChange(data):
 	roomId = data['roomId']
