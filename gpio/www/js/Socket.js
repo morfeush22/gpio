@@ -1,40 +1,25 @@
 var Socket = function(store, callback) {
 
-	var self = this;
 	var socket = null;
 
 	this.initialize = function() {
-
 		socket = io.connect("http://" + "192.168.1.140" + ":" + "5000" + "/gpio");
 
-		socket.on("initSync", function(msg) {			
+		socket.on("initSync", function(msg) {
 			var elements = [];
 
 			$.each(msg, function(item, value) {
 				var roomName = item;
 				var state = value[1].overallState;
 
-				var element = {
-					"elementId":
-						roomName,
-					"elementClass":
-	            		"single-row",
-	            	"elementContent":
-	            		store.makeSwitchTile("images/1.jpg", "images/2.jpg", "Push me!", {
-			                onTitle: "ON",
-			                onDesc: "None",
-			                offTitle: "OFF",
-			                offDesc: "None"
-	            		}),
-	            	"state":
-	            		state
-				};
+				var element = LightingMenuView.makeTile(roomName, state);
 				elements.push(element);
 
 			});
-			store.lightingMenuElements = elements;
-			callLater(callback);
 
+			store.lightingMenuElements = elements;
+			store.update();
+			callLater(callback);
 		});
 
 		socket.on("sync", function(msg) {
@@ -42,16 +27,12 @@ var Socket = function(store, callback) {
 				var roomName = item;
 				var state = value[1].overallState;
 
-				var state = (store.lightingMenuElements.filter(function(item) {
-	    			return item.elementId === roomName;
-	    		})[0].state = state);
-
-	    		if (element = $('#'+roomName))
-					element.children('.cycle-slideshow').cycle('goto', state);
+				LightingMenuView.setState(store, roomName, state);
 			});
 		});
 
 		socket.on('disconnect', function() {
+			//redirect
 			$("#dialog").dialog({
 	            title: "Ups"
 	        });
@@ -70,29 +51,22 @@ var Socket = function(store, callback) {
         if (callback) {
             setTimeout(function() {
                 callback(data);
-                self.bindEvents();
-                self.syncReq();
+                bindEvents();
             });
         }
     };
 
-    this.bindEvents = function() {
+    var bindEvents = function() {
     	socket.on('serverResponse', function(msg) {
-    		var state = (store.lightingMenuElements.filter(function(item) {
-    			return item.elementId === msg.roomId;
-    		})[0].state = msg.state);
+    		var roomName = msg.roomId;
+			var state = msg.state;
 
-    		if (element = $('#'+msg.roomId))
-				element.children('.cycle-slideshow').cycle('goto', state);
+    		LightingMenuView.setState(store, roomName, state);
 		});
     };
 
     this.registerEvents = function(item) {
-    	$item = $(item);
-		socket.emit("lightChange", {
-			"roomId": $item .parent().attr("id"),
-			"state": $item .next(".cycle-slideshow").data("cycle.opts").currSlide ? 0:1
-		});
+		socket.emit("lightChange", LightingMenuView.getState(item));
     };
 
     this.syncReq = function() {

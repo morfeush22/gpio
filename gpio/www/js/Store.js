@@ -1,10 +1,10 @@
 var Store = function() {
 
-    this.makeTile = function(image) {
+    var makeTile = function(image) {
         return "<img src=" + image + ">";
     };
 
-    this.makeSwitchTile = function(firstImage, secondImage, buttonText, descArgs) {
+    var makeSwitchTile = function(firstImage, secondImage, buttonText, descArgs) {
         return "<div class='tile-button'>" +
                  "<span>" + buttonText + "</span>" +
              "</div>" +
@@ -21,11 +21,20 @@ var Store = function() {
              "</div>";
     };
 
-    this.makeTemperatureTile = function(image) {
+    var makeTemperatureTile = function(image) {
         return "<div class='temp-slider'></div>" +
             "<div class='temperature-info'>" +
                 "<img src=" + image + ">" +
             "</div>";
+    };
+
+    this.update = function() {
+        this.allMenuElements = [].concat.apply([], [
+            this.mainMenuElements,
+            this.temperatureMenuElements,
+            this.blindsMenuElements,
+            this.lightingMenuElements
+        ]);
     };
 
     this.mainMenuElements = [
@@ -34,28 +43,28 @@ var Store = function() {
         "elementClass":
             "single-row first-order-menu",
         "elementContent":
-            this.makeTile("images/1.jpg")
+            makeTile("images/1.jpg")
         },
         {"elementId": 
             "lighting-menu",
         "elementClass":
             "single-row first-order-menu",
         "elementContent":
-            this.makeTile("images/1.jpg")
+            makeTile("images/1.jpg")
         },
         {"elementId": 
             "blinds-menu",
         "elementClass":
             "single-row first-order-menu",
         "elementContent":
-            this.makeTile("images/1.jpg")
+            makeTile("images/1.jpg")
         },
         {"elementId": 
             "alarm-switch",
         "elementClass":
             "single-row main-menu-switch",
         "elementContent":
-            this.makeSwitchTile("images/1.jpg", "images/2.jpg", "Push me!", {
+            makeSwitchTile("images/1.jpg", "images/2.jpg", "Push me!", {
                 onTitle: "ON",
                 onDesc: "None",
                 offTitle: "OFF",
@@ -69,7 +78,7 @@ var Store = function() {
         "elementClass":
             "single-row main-menu-pop-up",
         "elementContent":
-            this.makeTile("images/1.jpg")
+            makeTile("images/1.jpg")
         }
     ];
 
@@ -79,14 +88,14 @@ var Store = function() {
         "elementClass":
             "single-row temp-tile",
         "elementContent":
-            this.makeTemperatureTile("images/1.jpg")
+            makeTemperatureTile("images/1.jpg")
         },
         {"elementId":
             "temp-room-2",
         "elementClass":
             "single-row temp-tile",
         "elementContent":
-            this.makeTemperatureTile("images/1.jpg")
+            makeTemperatureTile("images/1.jpg")
         }
     ];
 
@@ -96,7 +105,7 @@ var Store = function() {
         "elementClass":
             "single-row",
         "elementContent":
-            this.makeSwitchTile("images/1.jpg", "images/2.jpg", "Push me!", {
+            makeSwitchTile("images/1.jpg", "images/2.jpg", "Push me!", {
                 onTitle: "ON",
                 onDesc: "None",
                 offTitle: "OFF",
@@ -110,7 +119,7 @@ var Store = function() {
         "elementClass":
             "single-row",
         "elementContent":
-            this.makeSwitchTile("images/1.jpg", "images/2.jpg", "Push me!", {
+            makeSwitchTile("images/1.jpg", "images/2.jpg", "Push me!", {
                 onTitle: "ON",
                 onDesc: "None",
                 offTitle: "OFF",
@@ -122,5 +131,12 @@ var Store = function() {
     ];
 
     this.lightingMenuElements = [];
+
+    this.allMenuElements = [].concat.apply([], [
+        this.mainMenuElements,
+        this.temperatureMenuElements,
+        this.blindsMenuElements,
+        this.lightingMenuElements
+    ]);
 
 }

@@ -18,24 +18,17 @@
  */
 var app = {
     startupDialog: function() {
-
-        new StartupDialogView(app.onDeviceReady);
-        /*
-        $("#startup-dialog").dialog({
-            title: "jQuery Dialog Popup",
-            buttons: {
-                Close: function () {
-                    $(this).dialog("close");
-                    app.onDeviceReady();
-                }
-            }
-        });
-        */
+        //checking if ip exists
+        new StartupDialogView(app.onReady);
+        
     },
+
+
     setup: function() {
         this.store = new Store();
         this.socket = new Socket(this.store, function(states) {
             app.route();
+            app.socket.syncReq();
         });
     },
     // Application Constructor
@@ -51,15 +44,14 @@ var app = {
     bindEvents: function() {
         //document.addEventListener('deviceready', this.startupDialog, false);
         this.startupDialog();
-
         $(window).on("hashchange", $.proxy(this.route, this));
     },
     // deviceready Event Handler
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
-        app.receivedEvent('deviceready');
+    onReady: function() {
+        app.receivedEvent('ready');
         app.setup();
     },
     // Update DOM on a Received Event
@@ -90,7 +82,8 @@ var app = {
                 matchAndCycle(elements, self.store.temperatureMenuElements);
                 break;
             case "#lighting-menu":
-                matchAndCycle(elements, self.store.lightingMenuElements);
+                //matchAndCycle(elements, self.store.lightingMenuElements);
+                LightingMenuView.updateView(self.store);
                 break;
             case "#blinds-menu":
                 matchAndCycle(elements, self.store.blindsMenuElements);
@@ -104,7 +97,7 @@ var app = {
 
         $("body").find(".tile-button").each(function() {
             $(this).on("click", function() {
-                self.socket.registerEvents(this);
+                app.socket.registerEvents(this);
             });
         });
     },
