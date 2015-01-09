@@ -1,9 +1,7 @@
 var Socket = function(store, callback) {
 
-	var socket = null;
-
 	this.initialize = function() {
-		socket = io.connect("http://" + "192.168.1.140" + ":" + "5000" + "/gpio");
+		socket = io.connect("http://" + localStorage.getItem("ip") + ":" + "5000" + "/gpio");
 
 		socket.on("initSync", function(msg) {
 			var elements = [];
@@ -73,5 +71,6 @@ var Socket = function(store, callback) {
     	socket.emit("syncReq");
     };
 
+    var socket = null;
 	this.initialize();
 }

@@ -1,23 +1,17 @@
 var LightingMenuView = function(store) {
-
 	this.initialize = function() {
-
 		this.element = $("<div/>");
 		this.element.on("click", ".back-main-menu-button", function() {
 			window.location.href = "#";
 		});
-
 	};
 
 	this.render = function() {
-
 		this.element.html(LightingMenuView.template(store));
 		return this;
-
 	};
 
 	this.initialize();
-
 };
 
 LightingMenuView.setState = function(store, roomName, state) {
@@ -39,7 +33,7 @@ LightingMenuView.getState = function(item) {
 	};
 };
 
-LightingMenuView.updateView = function(store) {
+LightingMenuView.updateView = function(store, socket) {
 	var elements = $("body").find(".cycle-slideshow").each(function() {
         $(this).cycle();
     });
@@ -51,10 +45,15 @@ LightingMenuView.updateView = function(store) {
 	        return item.elementId === $(self).parent().attr("id");
 	    })[0].state);
 	});
+
+	$("body").find(".tile-button").each(function() {
+        $(this).on("click", function() {
+            socket.registerEvents(this);
+        });
+    });
 };
 
 LightingMenuView.makeTile = function(roomName, state) {
-
 	var makeCycleTileElement = function(firstImage, secondImage, buttonText, descArgs) {
 	    return "<div class='tile-button'>" +
 	             "<span>" + buttonText + "</span>" +
@@ -87,7 +86,6 @@ LightingMenuView.makeTile = function(roomName, state) {
     	"state":
     		state
 	};
-
 };
 
 LightingMenuView.template = Handlebars.compile($("#lighting-menu-tpl").html());

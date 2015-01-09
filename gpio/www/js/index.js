@@ -16,13 +16,15 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 var app = {
     startupDialog: function() {
         //checking if ip exists
-        new StartupDialogView(app.onReady);
+        if (localStorage.getItem("ip"))
+            app.onReady();
+        $("body").html(new StartupDialogView(app.onReady).render().element);
         
     },
-
 
     setup: function() {
         this.store = new Store();
@@ -31,75 +33,67 @@ var app = {
             app.socket.syncReq();
         });
     },
-    // Application Constructor
+
+    //app constructor
     initialize: function() {
         $(document).ready(function() {
             app.bindEvents();
         });          
     },
-    // Bind Event Listeners
-    //
-    // Bind any events that are required on startup. Common events are:
-    // 'load', 'deviceready', 'offline', and 'online'.
+
     bindEvents: function() {
         //document.addEventListener('deviceready', this.startupDialog, false);
         this.startupDialog();
         $(window).on("hashchange", $.proxy(this.route, this));
     },
-    // deviceready Event Handler
-    //
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-    // function, we must explicitly call 'app.receivedEvent(...);'
+
     onReady: function() {
+        //to test presence of ip
+        console.log(localStorage.getItem("ip"));
+        //and delete
+        //localStorage.removeItem("ip");
+
         app.receivedEvent('ready');
         app.setup();
     },
-    // Update DOM on a Received Event
+
     receivedEvent: function(id) {
         console.log('Received Event: ' + id);
     },
 
     registerEvents: function(hash) {
-        var self = this;
-
+        //dummy for showing purporses
         var matchAndCycle = function(elements, store) {
             elements.each(function() {
                 var that = this;
 
-                $(this).cycle("goto", store.filter(function(item) {
+                $(this).cycle("goto", store.allMenuElements.filter(function(item) {
                     return item.elementId === $(that).parent().attr("id");
                 })[0].state);
-
             });
         };
 
+        //dummy for showing purporses
         var elements = $("body").find(".cycle-slideshow").each(function() {
             $(this).cycle();
         });
 
         switch(hash) {
             case "#temperature-menu":
-                matchAndCycle(elements, self.store.temperatureMenuElements);
+                matchAndCycle(elements, app.store);
                 break;
             case "#lighting-menu":
-                //matchAndCycle(elements, self.store.lightingMenuElements);
-                LightingMenuView.updateView(self.store);
+                LightingMenuView.updateView(app.store, app.socket);
                 break;
             case "#blinds-menu":
-                matchAndCycle(elements, self.store.blindsMenuElements);
+                matchAndCycle(elements, app.store);
                 break;
             default:
-                matchAndCycle(elements, self.store.mainMenuElements);
+                matchAndCycle(elements, app.store);
                 $('#help').on('click', function() {
                     console.log("Help pop-up!");
                 });
         }
-
-        $("body").find(".tile-button").each(function() {
-            $(this).on("click", function() {
-                app.socket.registerEvents(this);
-            });
-        });
     },
 
     route: function() {
@@ -121,5 +115,4 @@ var app = {
 
         this.registerEvents(hash);
     }
-
 };
