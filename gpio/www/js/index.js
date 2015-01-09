@@ -20,17 +20,26 @@
 var app = {
     startupDialog: function() {
         //checking if ip exists
-        if (localStorage.getItem("ip"))
+        if (localStorage.getItem("ip")) {
+            //$("body").html(new ConnectView().render().element);
+            window.location.hash = "#connect";
             app.onReady();
-        $("body").html(new StartupDialogView(app.onReady).render().element);
-        
+        } else {
+        $("body").html(new StartupDialogView(function() {
+                //$("body").html(new ConnectView().render().element);
+                window.location.hash = "#connect";
+                app.onReady();
+            }).render().element);
+        }      
     },
 
     setup: function() {
         this.store = new Store();
+        //refactor callback: function(states)
         this.socket = new Socket(this.store, function(states) {
-            app.route();
-            app.socket.syncReq();
+            //first, we load connect, not route
+            //app.route();
+            //app.socket.syncReq();
         });
     },
 
@@ -49,7 +58,7 @@ var app = {
 
     onReady: function() {
         //to test presence of ip
-        console.log(localStorage.getItem("ip"));
+        //console.log(localStorage.getItem("ip"));
         //and delete
         //localStorage.removeItem("ip");
 
@@ -88,6 +97,8 @@ var app = {
             case "#blinds-menu":
                 matchAndCycle(elements, app.store);
                 break;
+            case "#connect":
+                break;
             default:
                 matchAndCycle(elements, app.store);
                 $('#help').on('click', function() {
@@ -108,6 +119,9 @@ var app = {
                 break;
             case "#blinds-menu":
                 $("body").html(new BlindsMenuView(this.store.blindsMenuElements).render().element);
+                break;
+            case "#connect":
+                $("body").html(new ConnectView().render().element);
                 break;
             default:
                 $("body").html(new MainMenuView(this.store.mainMenuElements).render().element);

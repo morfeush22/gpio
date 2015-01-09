@@ -1,6 +1,7 @@
 var Socket = function(store, callback) {
 
 	this.initialize = function() {
+		var self = this;
 		socket = io.connect("http://" + localStorage.getItem("ip") + ":" + "5000" + "/gpio");
 
 		socket.on("initSync", function(msg) {
@@ -31,17 +32,20 @@ var Socket = function(store, callback) {
 
 		socket.on('disconnect', function() {
 			//redirect
-			$("#dialog").dialog({
-	            title: "Ups"
-	        });
+			window.location.hash = "#reconnect";
+			$("#reconnect").html("Server stopped responding, trying to restore connection!");
 		});
 
 		socket.on('connect', function() {
 			console.log("connect");
+			window.location.hash = "#";
+			self.syncReq();
 		});
 
 		socket.on('error', function() {
 			console.log('error');
+			//give user ip of server
+			$("#connect").html("Server not responding!");
 		});
 	}
 
