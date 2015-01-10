@@ -18,6 +18,7 @@ var Socket = function(store, callback) {
 
 			store.lightingMenuElements = elements;
 			store.update();
+			//bindEvents()
 			callLater(callback);
 		});
 
@@ -45,7 +46,9 @@ var Socket = function(store, callback) {
 		socket.on('error', function() {
 			console.log('error');
 			//give user ip of server
-			$("#connect").html("Server not responding!");
+			//should block options back button
+			window.location.hash = "#options";
+			//$("#connect").html("Server not responding!");
 		});
 	}
 

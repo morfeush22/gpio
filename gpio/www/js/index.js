@@ -22,12 +22,10 @@ var app = {
         //checking if ip exists
         if (localStorage.getItem("ip")) {
             //$("body").html(new ConnectView().render().element);
-            window.location.hash = "#connect";
             app.onReady();
         } else {
         $("body").html(new StartupDialogView(function() {
-                //$("body").html(new ConnectView().render().element);
-                window.location.hash = "#connect";
+                //$("body").html(new ConnectView().render().element);   
                 app.onReady();
             }).render().element);
         }      
@@ -60,8 +58,8 @@ var app = {
         //to test presence of ip
         //console.log(localStorage.getItem("ip"));
         //and delete
-        //localStorage.removeItem("ip");
-
+        //localStorage.removeItem("ip"); !!!
+        window.location.hash = "#connect";
         app.receivedEvent('ready');
         app.setup();
     },
@@ -99,6 +97,8 @@ var app = {
                 break;
             case "#connect":
                 break;
+            case "#options":
+                break;
             default:
                 matchAndCycle(elements, app.store);
                 $('#help').on('click', function() {
@@ -122,6 +122,9 @@ var app = {
                 break;
             case "#connect":
                 $("body").html(new ConnectView().render().element);
+                break;
+            case "#options":
+                $("body").html(new OptionsView(this.socket, app.onReady).render().element);
                 break;
             default:
                 $("body").html(new MainMenuView(this.store.mainMenuElements).render().element);
