@@ -58,7 +58,7 @@ var app = {
         //to test presence of ip
         //console.log(localStorage.getItem("ip"));
         //and delete
-        //localStorage.removeItem("ip"); !!!
+        localStorage.removeItem("ip"); //!!!
         window.location.hash = "#connect";
         app.receivedEvent('ready');
         app.setup();

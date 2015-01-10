@@ -47,6 +47,7 @@ var OptionsView = function(socket, callback) {
 		if (valid) {
 			//dc, new ip and reconnect
 			//socket.disconnect();
+			console.log(socket.socket);
 			localStorage.removeItem("ip");
 			localStorage.setItem("ip", ip.val());
 			//localStorage.getItem("ip");
