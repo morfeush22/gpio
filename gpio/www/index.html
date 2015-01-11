@@ -32,7 +32,6 @@
 
         <script id="connect-tpl" type="text/x-handlebars-template">
         //beautiful animation, conditionaly options menu open
-            <button type="button" id="to-options">Options!</button> 
             <div id="connect">
                 Connecting!
             </div>
@@ -40,8 +39,17 @@
 
         <script id="reconnect-tpl" type="text/x-handlebars-template">
         //beautiful animation and button refering to options menu
+            <button type="button" id="load-options">Options!</button> 
             <div id="reconnect">
                 Reconnecting!
+            </div>
+        </script>
+
+        <script id="error-tpl" type="text/x-handlebars-template">
+        //beautiful animation and button refering to options menu
+            <button type="button" id="reload-app">Restart!</button> 
+            <div id="error">
+                Something gone wrong. In order to continue, please tap the button and re-enter IP.
             </div>
         </script>
 
@@ -121,7 +129,9 @@
         <script type="text/javascript" src="js/views/TemperatureMenuView.js"></script>
         <script type="text/javascript" src="js/views/StartupDialogView.js"></script>
         <script type="text/javascript" src="js/views/ConnectView.js"></script>
+        <script type="text/javascript" src="js/views/ReconnectView.js"></script>
         <script type="text/javascript" src="js/views/OptionsView.js"></script>
+        <script type="text/javascript" src="js/views/ErrorView.js"></script>
 
         <script type="text/javascript" src="js/socket/socket.io.js"></script>
 

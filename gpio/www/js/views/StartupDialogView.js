@@ -43,7 +43,6 @@ var StartupDialogView = function(callback) {
 		valid = valid && checkRegexp(ip, /^(?=\d+\.\d+\.\d+\.\d+$)(?:(?:25[0-9]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]|[0-9])\.?){4}$/, "Wrong IP address");
 		if (valid) {
 			localStorage.setItem("ip", ip.val());
-			//localStorage.getItem("ip")
 			callLater(callback);
 		}
 	};

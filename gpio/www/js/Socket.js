@@ -34,12 +34,15 @@ var Socket = function(store, callback) {
 		socket.on('disconnect', function() {
 			//redirect
 			window.location.hash = "#reconnect";
-			$("#reconnect").html("Server stopped responding, trying to restore connection!");
+			//$("#reconnect").html("Server stopped responding, trying to restore connection!");
 		});
 
 		socket.on('connect', function() {
 			console.log("connect");
-			window.location.hash = "#";
+			if (window.location.hash === "#options") {
+			} else {
+				window.location.hash = "#";
+			}
 			self.syncReq();
 		});
 
@@ -47,7 +50,7 @@ var Socket = function(store, callback) {
 			console.log('error');
 			//give user ip of server
 			//should block options back button
-			window.location.hash = "#options";
+			window.location.hash = "#error";
 			//$("#connect").html("Server not responding!");
 		});
 	}
@@ -76,6 +79,10 @@ var Socket = function(store, callback) {
 
     this.syncReq = function() {
     	socket.emit("syncReq");
+    };
+
+    this.getSocket = function() {
+    	return socket;
     };
 
     var socket = null;
