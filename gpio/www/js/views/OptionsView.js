@@ -1,4 +1,4 @@
-var OptionsView = function(socket, callback) {
+var OptionsView = function() {
 
 	this.initialize = function() {
 		var self = this;
@@ -45,21 +45,11 @@ var OptionsView = function(socket, callback) {
 		ip.removeClass("ui-state-error");
 		valid = valid && checkRegexp(ip, /^(?=\d+\.\d+\.\d+\.\d+$)(?:(?:25[0-9]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]|[0-9])\.?){4}$/, "Wrong IP address");
 		if (valid) {
-			//dc, new ip and reconnect
 			localStorage.removeItem("ip");
 			localStorage.setItem("ip", ip.val());
 			window.location = "index.html";
-			//callLater(callback);
 		}
 	};
-
-	var callLater = function(callback, data) {
-        if (callback) {
-            setTimeout(function() {
-                callback(data);
-            });
-        }
-    };
-}
+};
 
 OptionsView.template = Handlebars.compile($("#options-menu-tpl").html());

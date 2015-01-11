@@ -76,7 +76,7 @@ var Store = function() {
         {"elementId": 
             "help",
         "elementClass":
-            "single-row main-menu-pop-up",
+            "single-row first-order-menu",
         "elementContent":
             makeTile("images/1.jpg")
         }
@@ -139,4 +139,4 @@ var Store = function() {
         this.lightingMenuElements
     ]);
 
-}
+};

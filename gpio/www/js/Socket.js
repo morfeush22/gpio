@@ -1,8 +1,8 @@
-var Socket = function(store, callback) {
+var Socket = function(store) {
 
 	this.initialize = function() {
 		var self = this;
-		socket = io.connect("http://" + localStorage.getItem("ip") + ":" + "5000" + "/gpio");
+		socket = io.connect("http://" + localStorage.getItem("ip") + ":5000/gpio");
 
 		socket.on("initSync", function(msg) {
 			var elements = [];
@@ -13,13 +13,11 @@ var Socket = function(store, callback) {
 
 				var element = LightingMenuView.makeTile(roomName, state);
 				elements.push(element);
-
 			});
 
 			store.lightingMenuElements = elements;
 			store.update();
-			//bindEvents()
-			callLater(callback);
+			bindEvents();
 		});
 
 		socket.on("sync", function(msg) {
@@ -32,14 +30,14 @@ var Socket = function(store, callback) {
 		});
 
 		socket.on('disconnect', function() {
-			//redirect
-			window.location.hash = "#reconnect";
-			//$("#reconnect").html("Server stopped responding, trying to restore connection!");
+			if (window.location.hash === "#options" || window.location.hash === "#help") {
+			} else {
+				window.location.hash = "#reconnect";
+			}
 		});
 
 		socket.on('connect', function() {
-			console.log("connect");
-			if (window.location.hash === "#options") {
+			if (window.location.hash === "#options" || window.location.hash === "#help") {
 			} else {
 				window.location.hash = "#";
 			}
@@ -47,22 +45,9 @@ var Socket = function(store, callback) {
 		});
 
 		socket.on('error', function() {
-			console.log('error');
-			//give user ip of server
-			//should block options back button
 			window.location.hash = "#error";
-			//$("#connect").html("Server not responding!");
 		});
-	}
-
-	var callLater = function(callback, data) {
-        if (callback) {
-            setTimeout(function() {
-                callback(data);
-                bindEvents();
-            });
-        }
-    };
+	};
 
     var bindEvents = function() {
     	socket.on('serverResponse', function(msg) {
@@ -87,4 +72,4 @@ var Socket = function(store, callback) {
 
     var socket = null;
 	this.initialize();
-}
+};

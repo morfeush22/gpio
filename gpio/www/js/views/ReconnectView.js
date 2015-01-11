@@ -6,6 +6,10 @@ var ReconnectView = function() {
 			event.preventDefault();
 			window.location.hash = "#options";
 		});
+		this.element.on("click", "#load-help", function(event) {
+			event.preventDefault();
+			window.location.hash = "#help";
+		});
 	};
 
 	this.render = function() {

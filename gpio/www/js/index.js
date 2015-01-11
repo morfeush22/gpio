@@ -1,25 +1,5 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
-
 var app = {
     startupDialog: function() {
-        //checking if ip exists
         if (localStorage.getItem("ip")) {
             app.onReady();
         } else {
@@ -31,14 +11,9 @@ var app = {
 
     setup: function() {
         this.store = new Store();
-        //refactor callback: function(states)
-        this.socket = new Socket(this.store, function(states) {
-
-        });
-        console.log(app.socket);
+        this.socket = new Socket(this.store);
     },
 
-    //app constructor
     initialize: function() {
         $(document).ready(function() {
             app.bindEvents();
@@ -47,9 +22,9 @@ var app = {
 
     bindEvents: function() {
         //document.addEventListener('deviceready', this.startupDialog, false);
+        //so to emulate this one:
         this.startupDialog();
         $(window).on("hashchange", $.proxy(this.route, this));
-        console.log("after bind");
     },
 
     onReady: function() {
@@ -96,17 +71,16 @@ var app = {
                         matchAndCycle(elements, app.store);
                         break;
                     case "#options":
+                    case "#help":
                     case "#error":
                         break;
                     default:
                         matchAndCycle(elements, app.store);
-                        $('#help').on('click', function() {
-                            console.log("Help pop-up!");
-                        });
                 }
             } else {
                 switch(hash) {
                     case "#options":
+                    case "#help":
                     default:
                         break;
                 }
@@ -121,9 +95,6 @@ var app = {
     route: function() {
         var hash = window.location.hash;
 
-        console.log(this.socket);
-        console.log(hash);
-
         if (typeof app.socket !== "undefined") {
             if (!app.socket.getSocket().socket.reconnecting) {
                 switch(hash) {
@@ -137,7 +108,10 @@ var app = {
                         $("body").html(new BlindsMenuView(this.store.blindsMenuElements).render().element);
                         break;
                     case "#options":
-                        $("body").html(new OptionsView(this.socket, app.onReady).render().element);
+                        $("body").html(new OptionsView().render().element);
+                        break;
+                    case "#help":
+                        $("body").html(new HelpView().render().element);
                         break;
                     case "#error":
                         $("body").html(new ErrorView().render().element);
@@ -148,7 +122,10 @@ var app = {
             } else {
                 switch(hash) {
                     case "#options":
-                        $("body").html(new OptionsView(this.socket, app.onReady).render().element);
+                        $("body").html(new OptionsView().render().element);
+                        break;
+                    case "#help":
+                        $("body").html(new HelpView().render().element);
                         break;
                     default:
                         $("body").html(new ReconnectView().render().element);

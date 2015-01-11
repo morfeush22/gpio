@@ -6,9 +6,6 @@
         <meta name="msapplication-tap-highlight" content="no" />
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
 
-        <!--
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        -->
         <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
         <link rel="stylesheet" type="text/css" href="css/jquery-ui-slider-pips.css">
         <link rel="stylesheet" type="text/css" href="css/main.css">
@@ -23,30 +20,36 @@
                     <label for="ip">IP</label>
                     <input type="text" name="ip" id="ip" value="" class="startup-dialog-form">
                     <input type="submit" value="Submit">
-                    {{!--
-                    <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
-                    --}}
                 </form>
             </div>
         </script>
 
         <script id="connect-tpl" type="text/x-handlebars-template">
-        //beautiful animation, conditionaly options menu open
+        //beautiful animation
             <div id="connect">
                 Connecting!
             </div>
         </script>
 
+        <script id="help-tpl" type="text/x-handlebars-template">
+        //whatever...
+            <div class="single-row back-button">Back</div>
+            <div id="help">
+                Help!
+            </div>
+        </script>
+
         <script id="reconnect-tpl" type="text/x-handlebars-template">
-        //beautiful animation and button refering to options menu
-            <button type="button" id="load-options">Options!</button> 
+        //beautiful animation
+            <button type="button" id="load-options">Options!</button>
+            <button type="button" id="load-help">Help!</button>
             <div id="reconnect">
                 Reconnecting!
             </div>
         </script>
 
         <script id="error-tpl" type="text/x-handlebars-template">
-        //beautiful animation and button refering to options menu
+        //some info for user
             <button type="button" id="reload-app">Restart!</button> 
             <div id="error">
                 Something gone wrong. In order to continue, please tap the button and re-enter IP.
@@ -54,25 +57,19 @@
         </script>
 
         <script id="options-menu-tpl" type="text/x-handlebars-template">
-        //in constructor should be callback to get logging info
-        //regex for ip input
-        //tooltip for regex ;)
-        //back-button = window.back(), or sth like this
             <div class="single-row back-button">Back</div>
             <div class="menu-title" id="options-menu-title">Options</div>
                 <form>
                     <label for="ip">IP</label>
                     <input type="text" name="ip" id="ip" value="" class="startup-dialog-form">
                     <input type="submit" value="Submit">
-                    {{!--
-                    <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
-                    --}}
                 </form>
             <div class="footer">Footer</div>
         </script>
 
     	<script id="main-menu-tpl" type="text/x-handlebars-template">
     		<div class="menu-title" id="main-menu-title">Hi! How can i help you?</div>
+            <button type="button" id="load-options">Options!</button>
     		{{#each this}}
     			<div class="{{this.elementClass}}" id="{{this.elementId}}">
     				{{{this.elementContent}}}
@@ -132,6 +129,7 @@
         <script type="text/javascript" src="js/views/ReconnectView.js"></script>
         <script type="text/javascript" src="js/views/OptionsView.js"></script>
         <script type="text/javascript" src="js/views/ErrorView.js"></script>
+        <script type="text/javascript" src="js/views/HelpView.js"></script>
 
         <script type="text/javascript" src="js/socket/socket.io.js"></script>
 
