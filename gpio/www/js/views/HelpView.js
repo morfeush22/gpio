@@ -3,7 +3,7 @@ var HelpView = function() {
 	this.initialize = function() {
 		this.element = $("<div/>");
 		this.element.on("click", ".back-button", function() {
-			window.history.back();
+			window.location.hash = "#";
 		});
 	};
 

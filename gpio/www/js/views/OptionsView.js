@@ -4,7 +4,7 @@ var OptionsView = function() {
 		var self = this;
 		this.element = $("<div/>");
 		this.element.on("click", ".back-button", function() {
-			window.history.back();
+			window.location.hash = "#";
 		});
 		this.element.on("submit", "form", function(event) {
 			event.preventDefault();
