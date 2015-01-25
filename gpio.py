@@ -10,22 +10,26 @@ import signal
 import sys
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'secret'
+app.config['SECRET_KEY'] = 'secret_pass'
 app.config['DEBUG'] = True
 socketio = SocketIO(app)
 
 GPIO.setmode(GPIO.BCM)
 
 pins = {
-	'light-room-1': [[{'pinNumber': 17, 'state': 0}], {'overallState': 0}],
-	'light-room-2': [[{'pinNumber': 27, 'state': 0}], {'overallState': 0}],
-	'light-room-3': [[{'pinNumber': 22, 'state': 0}], {'overallState': 0}]
+	'light':
+		{
+			'light-room-1': [[{'pinNumber': 17, 'state': 0}], {'overallState': 0}],
+			'light-room-2': [[{'pinNumber': 27, 'state': 0}], {'overallState': 0}],
+			'light-room-3': [[{'pinNumber': 22, 'state': 0}], {'overallState': 0}]
+		}
 }
 
-for states in pins.itervalues():
-	for pinState in states[0]:
-		GPIO.setup(pinState['pinNumber'], GPIO.OUT)
-		GPIO.output(pinState['pinNumber'], GPIO.LOW)
+for types in pins.itervalues():
+	for states in types.itervalues():
+		for pinState in states[0]:
+			GPIO.setup(pinState['pinNumber'], GPIO.OUT)
+			GPIO.output(pinState['pinNumber'], GPIO.LOW)
 
 @socketio.on('connect', namespace='/gpio')
 def initSync():
@@ -35,6 +39,7 @@ def initSync():
 
 @socketio.on('disconnect', namespace='/gpio')
 def test_disconnect():
+	print "Client disconnected!"
 	return
 
 @socketio.on('syncReq', namespace='/gpio')
@@ -47,21 +52,22 @@ def sync():
 def handleLightChange(data):
 	roomId = data['roomId']
 	state = data['state']
-	pinNumber = pins[roomId][0][0]['pinNumber']
+	pinNumber = pins['light'][roomId][0][0]['pinNumber']
 
 	if state == 1:
 		GPIO.output(pinNumber, GPIO.HIGH)
 	if state == 0:
 		GPIO.output(pinNumber, GPIO.LOW)
 
-	for states in pins.itervalues():
+	for states in pins['light'].itervalues():
 		for pinState in states[0]:
 			pinState['state'] = GPIO.input(pinState['pinNumber'])
 		states[1]['overallState'] = GPIO.input(states[0][0]['pinNumber'])
 
 	emit('serverResponse', {
-		'roomId': roomId,
-		'state': pins[roomId][1]['overallState']
+			'type': 'light',
+			'roomId': roomId,
+			'state': pins['light'][roomId][1]['overallState']
 		}, 
 		broadcast=True)
 

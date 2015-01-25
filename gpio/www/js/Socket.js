@@ -7,12 +7,18 @@ var Socket = function(store) {
 		socket.on("initSync", function(msg) {
 			var elements = [];
 
-			$.each(msg, function(item, value) {
-				var roomName = item;
-				var state = value[1].overallState;
+			$.each(msg, function(type, content) {
+				$.each(content, function(item, value) {
+					var roomName = item;
+					var state = value[1].overallState;
 
-				var element = LightingMenuView.makeTile(roomName, state);
-				elements.push(element);
+					switch(type) {
+						case "light":
+							var element = LightingMenuView.makeTile(roomName, state);
+							elements.push(element);
+							break;
+					}
+				});
 			});
 
 			store.lightingMenuElements = elements;
@@ -21,11 +27,17 @@ var Socket = function(store) {
 		});
 
 		socket.on("sync", function(msg) {
-			$.each(msg, function(item, value) {
-				var roomName = item;
-				var state = value[1].overallState;
+			$.each(msg, function(type, content) {
+				$.each(content, function(item, value) {
+					var roomName = item;
+					var state = value[1].overallState;
 
-				LightingMenuView.setState(store, roomName, state);
+					switch(type) {
+						case "light":
+							LightingMenuView.setState(store, roomName, state);
+							break;
+					}			
+				});
 			});
 		});
 
@@ -54,7 +66,10 @@ var Socket = function(store) {
     		var roomName = msg.roomId;
 			var state = msg.state;
 
-    		LightingMenuView.setState(store, roomName, state);
+			switch(msg["type"]) {
+				case "light":
+					LightingMenuView.setState(store, roomName, state);
+			}		
 		});
     };
 
