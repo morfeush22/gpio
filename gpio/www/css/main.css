@@ -79,7 +79,7 @@ div.menu-title, .settings#load-options {
 
 .cycle-slideshow {
 	display: inline-block;
-	height: 10vw;
+	width: 10%;
 }
 
 .temp-slider {
@@ -124,14 +124,9 @@ div.menu-title, .settings#load-options {
 	float: left;
 }
 .tile-button {
-	width: 50%;
-	height: 50%;
+	width: 10%;
+	height: 10%;
 	
-	
-}
-
-.cycle-slideshow  {
-	width: 30%;
 	
 }
 
