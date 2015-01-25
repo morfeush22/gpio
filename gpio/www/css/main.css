@@ -1,37 +1,98 @@
 body {
 }
 
+.validate-tips, .options-validate-tips{
+	display: table-cell;
+	width:400px;
+	height:150px;
+	vertical-align: middle;
+	font-size: 125%;
+	
+	
+}
+.common-background{
+
+	background-image: url('../images/background.png');
+	width:400px;
+	height:150px;
+	position: relative;
+	left: 37.5%;
+	display: block;
+	text-align: center;
+	margin-top: 15%;
+	font-family: tahoma;
+	
+	color: #ffffff;
+}
+
+#connect{
+	font-size: 125%;
+	position: absolute;
+	top: calc(40%);
+	left: calc(50% - 160px);
+	left: -webkit-calc(50% - 200px);
+	oapcity: 1;
+	-webkit-animation: fade-in-out 2.5s infinite; 
+	-moz-animation: fade-in-out 2.5s infinite; 
+	-o-animation: fade-in-out 2.5s infinite; 
+	animation: fade-in-out 2.5s infinite;
+	width:400px;
+	height:150px;
+	
+
+}
+#error{
+	display: table-cell;
+	font-size: 100%;
+	margin-left: 10%;
+	margin-right: 10%;
+	width:400px;
+	height:150px;
+	vertical-align: middle;
+}
+
 p.menu-title {
-	font-size: 300%;
+	font-size: 200%;
 	margin-bottom: 30px;
 	display: block;
+	width: 400px;
+	position: relative;
+	left: 37.5%;
+	font-family: Arial;
+	text-align: center;
+	
 }
 
 .single-row {
-	margin-bottom: 20px;
-	margin-left: 20px;
+	margin-bottom: 10 px;
+	margin-left: 0px;
 	display: block;
+	text-align: center;
+	position: relative;
+
+	left: 37.5%;
 }
 
 .tile-button {
-	background: orange;
-	width: 15vw;
-	height: 15vw;
+	
+	text-align: right;
+	height: 190 px;
 	display: inline-block;
 	color: white;
 	float: left;
-	margin-right: 10px;
+	margin-right: 20px;
 }
 
 .cycle-slideshow {
 	display: inline-block;
-	height: 15vw;
+	height: 10vw;
 }
 
 .temp-slider {
 	background: white;
 	height: 15vw;
-	display: inline-block;
+
+	display: block;
 	color: white;
 	float: left;
 	margin-right: 60px !important;
@@ -39,16 +100,20 @@ p.menu-title {
 
 .temp-tile {
 	margin-bottom: 30px;
+	width: 500px;
+	height: 15vw;
 }
 
 .temperature-info {
-	display: inline-block;
-	height: 15vw;
+	display: block;
+	width: 400 px;
 }
 
 .first-order-menu {
 	display: block;
-	height: 15vw;
+	height: 160 px;
+	width: 400px;
+
 }
 
 .cycle-overlay {
@@ -65,16 +130,72 @@ p.menu-title {
 
 .cycle-slideshow > img {
 	width: 100%;
-	height: 100%;
+	
 }
 
 .footer {
 	margin-top: 30px;
 }
+.back-main-menu-button{
+	width: 150px;
+}
+.alarm-switch{
+	width: 400px;
+}
+.light-menu, .blind-menu{
+	width: 580px;
+}
 
 #temperature-menu, #lighting-menu, #blinds-menu, #help-message {
 }
 
-img {
-	box-shadow: 2px 1px 1px #888888;
+
+/*ANIMATION*/
+@-webkit-keyframes fade-in-out{
+  0%{
+    opacity: 1;
+  }
+  50%{
+    opacity: 0;
+  }
+  100%{
+    oapcity: 1;
+  }
 }
+
+@-moz-keyframes fade-in-out{
+  0%{
+    opacity: 1;
+  }
+  50%{
+    opacity: 0;
+  }
+  100%{
+    oapcity: 1;
+  }
+}
+
+@-o-keyframes fade-in-out{
+  0%{
+    opacity: 1;
+  }
+  50%{
+    opacity: 0;
+  }
+  100%{
+    oapcity: 1;
+  }
+}
+
+@keyframes fade-in-out{
+  0%{
+    opacity: 1;
+  }
+  50%{
+    opacity: 0;
+  }
+  100%{
+    oapcity: 1;
+  }
+}
+/*END ANIMATION*/
