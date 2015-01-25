@@ -71,11 +71,10 @@ div.menu-title, .settings#load-options {
 
 .tile-button {
 	
-	text-align: right;
 	height: 190 px;
 	display: inline-block;
 	color: white;
-	float: left;
+
 }
 
 .cycle-slideshow {
