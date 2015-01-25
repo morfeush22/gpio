@@ -101,13 +101,10 @@ div.menu-title, .settings#load-options {
 
 .temperature-info {
 	display: block;
-	width: 400 px;
 }
 
 .first-order-menu {
 	display: block;
-	width: 400px;
-
 }
 
 .cycle-overlay {
@@ -118,30 +115,31 @@ div.menu-title, .settings#load-options {
 	opacity: 0.5;
 	position: absolute;
 	padding: 15px;
-	width: 100%;
 	z-index: 600;
 }
 
 .cycle-slideshow > img {
-	width: 80%;
+	width: 60%;
 	
 }
 .single-row  .tile-button> img {
-	width: 80%;
-	height: 80%;
+	width: 60%;
+	height: 60%;
 }
-
+.back-main-menu-button {
+}
 .footer {
 	margin-top: 30px;
 }
 .alarm-switch{
-	width: 400px;
+
 }
 .light-menu, .blind-menu{
 	width: 80%;
 }
 
-#temperature-menu, #lighting-menu, #blinds-menu, #help-message {
+#temperature-menu, #lighting-menu, #blinds-menu, #help-message > img{
+	width: 80%
 }
 
 
