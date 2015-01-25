@@ -65,7 +65,6 @@ div.menu-title, .settings#load-options {
 	margin-bottom: 10 px;
 	margin-left: 0px;
 	display: block;
-	text-align: center;
 	position: relative;
 }
 
@@ -74,6 +73,7 @@ div.menu-title, .settings#load-options {
 	height: 190 px;
 	display: inline-block;
 	color: white;
+	float: left;
 
 }
 
