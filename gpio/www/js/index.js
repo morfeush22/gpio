@@ -13,7 +13,7 @@ var app = {
         this.store = new Store();
         this.socket = new Socket(this.store);
         //be carefull with this "this"
-        //document.addEventListener("resume", this.socket.syncReq(), false);
+        document.addEventListener("resume", this.socket.syncReq(), false);
     },
 
     initialize: function() {
@@ -23,9 +23,9 @@ var app = {
     },
 
     bindEvents: function() {
-        //document.addEventListener("deviceready", this.startupDialog, false);
+        document.addEventListener("deviceready", this.startupDialog, false);
         //so to emulate this one:
-        this.startupDialog();
+        //this.startupDialog();
         $(window).on("hashchange", $.proxy(this.route, this));
     },
 
