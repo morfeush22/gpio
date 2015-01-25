@@ -16,12 +16,11 @@ body {
 	width:400px;
 	height:150px;
 	position: relative;
-	left: 37.5%;
 	display: block;
 	text-align: center;
 	margin-top: 15%;
 	font-family: tahoma;
-	
+
 	color: #ffffff;
 }
 
@@ -79,8 +78,7 @@ div.menu-title, .settings#load-options {
 
 .cycle-slideshow {
 	display: inline-block;
-	width: 30%;
-	height: 70%;
+	width: 20%;
 }
 .cicle-slideshow > img , .tile-button > img{
 	max-width:100%;
