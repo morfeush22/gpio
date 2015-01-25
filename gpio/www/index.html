@@ -14,100 +14,106 @@
     </head>
     <body>
         <script id="startup-dialog-tpl" type="text/x-handlebars-template">
-            <div id="startup-dialog">
-                <div class="validate-tips">Please enter IP.</div>
+            <div class="common-background">
+                <div class="validate-tips">Please enter IP.
                 <form>
                     <label for="ip">IP</label>
                     <input type="text" name="ip" id="ip" value="" class="startup-dialog-form">
                     <input type="submit" value="Submit">
-                </form>
+                </form></div>
             </div>
         </script>
 
         <script id="connect-tpl" type="text/x-handlebars-template">
-        //beautiful animation
-            <div id="connect">
-                Connecting!
-            </div>
+			<div class="common-background">
+				<div id="connect">
+					Connecting!
+				</div>
+			</div>
         </script>
 
         <script id="help-tpl" type="text/x-handlebars-template">
-        //whatever...
-            <div class="single-row back-button">Back</div>
+            <div class="single-row back-button"><img src="images/back.png"></div>
             <div id="help">
-                Help!
             </div>
         </script>
 
         <script id="reconnect-tpl" type="text/x-handlebars-template">
-        //beautiful animation
+        <div class="common-background">
             <button type="button" id="load-options">Options!</button>
             <button type="button" id="load-help">Help!</button>
             <div id="reconnect">
                 Reconnecting!
             </div>
+		</div>
         </script>
 
         <script id="error-tpl" type="text/x-handlebars-template">
-        //some info for user
-            <button type="button" id="reload-app">Restart!</button> 
-            <div id="error">
-                Something gone wrong. In order to continue, please tap the button and re-enter IP.
-            </div>
+            <div class="background">
+			<div id="error">
+                <p>Something gone wrong.</p><p> Please tap the button and re-enter IP.</p>
+				<button type="button" id="reload-app">Restart!</button> 
+			</div>
+
+		</div>
         </script>
 
         <script id="options-menu-tpl" type="text/x-handlebars-template">
-            <div class="single-row back-button">Back</div>
-            <div class="menu-title" id="options-menu-title">Options</div>
-                <form>
-                    <label for="ip">IP</label>
-                    <input type="text" name="ip" id="ip" value="" class="startup-dialog-form">
-                    <input type="submit" value="Submit">
-                </form>
-            <div class="footer">Footer</div>
+            <div class="common-background">
+				<div class="options-validate-tips">Options
+					<form>
+						<label for="ip">IP</label>
+						<input type="text" name="ip" id="ip" value="" class="startup-dialog-form">
+						<input type="submit" value="Submit">
+					</form>
+				
+				</div>
+				
+			</div>
+			<div class="back-button"><img src="images/arrow.png"></div>	
         </script>
 
     	<script id="main-menu-tpl" type="text/x-handlebars-template">
     		<div class="menu-title" id="main-menu-title">Hi! How can i help you?</div>
-            <button type="button" id="load-options">Options!</button>
-    		{{#each this}}
+            {{#each this}}
     			<div class="{{this.elementClass}}" id="{{this.elementId}}">
     				{{{this.elementContent}}}
     			</div>
     		{{/each}}
+			<div class="main-menu-options" id="load-options"><img src="images/settings.png"></div>
     		<div class="footer">Footer</div>
     	</script>
 
         <script id="blinds-menu-tpl" type="text/x-handlebars-template">
-            <div class="single-row back-main-menu-button">Back</div>
             <div class="menu-title" id="blinds-menu-title">Which blinds to close?</div>
             {{#each this}}
                 <div class="{{this.elementClass}}" id="{{this.elementId}}">
                     {{{this.elementContent}}}
                 </div>
             {{/each}}
+            <div class="single-row back-main-menu-button"><img src="images/back.png"></div>			
             <div class="footer">Footer</div>
         </script>
 
         <script id="lighting-menu-tpl" type="text/x-handlebars-template">
-            <div class="single-row back-main-menu-button">Back</div>
             <div class="menu-title" id="lighting-menu-title">Which lights to turn?</div>
             {{#each this}}
                 <div class="{{this.elementClass}}" id="{{this.elementId}}">
                     {{{this.elementContent}}}
                 </div>
             {{/each}}
+            <div class="single-row back-main-menu-button"><img src="images/back.png"></div>			
             <div class="footer">Footer</div>
         </script>
 
         <script id="temperature-menu-tpl" type="text/x-handlebars-template">
-            <div class="single-row back-main-menu-button">Back</div>
             <div class="menu-title" id="temperature-menu-title">Check temperature?</div>
             {{#each this}}
                 <div class="{{this.elementClass}}" id="{{this.elementId}}">
                     {{{this.elementContent}}}
                 </div>
             {{/each}}
+            <div class="single-row back-main-menu-button"><img src="images/back.png"></div>			
             <div class="footer">Footer</div>
         </script>
 

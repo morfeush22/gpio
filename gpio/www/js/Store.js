@@ -4,9 +4,9 @@ var Store = function() {
         return "<img src=" + image + ">";
     };
 
-    var makeSwitchTile = function(firstImage, secondImage, buttonText, descArgs) {
+    var makeSwitchTile = function(firstImage, secondImage, buttonImage, descArgs) {
         return "<div class='tile-button'>" +
-                 "<span>" + buttonText + "</span>" +
+                 "<img src=" + buttonImage + ">" +
              "</div>" +
              "<div class='cycle-slideshow'\
                  data-cycle-fx=fadeout\
@@ -43,32 +43,32 @@ var Store = function() {
         "elementClass":
             "single-row first-order-menu",
         "elementContent":
-            makeTile("images/1.jpg")
+            makeTile("images/temp.png")
         },
         {"elementId": 
             "lighting-menu",
         "elementClass":
             "single-row first-order-menu",
         "elementContent":
-            makeTile("images/1.jpg")
+            makeTile("images/light.png")
         },
         {"elementId": 
             "blinds-menu",
         "elementClass":
             "single-row first-order-menu",
         "elementContent":
-            makeTile("images/1.jpg")
+            makeTile("images/blind.png")
         },
         {"elementId": 
             "alarm-switch",
         "elementClass":
-            "single-row main-menu-switch",
+            "single-row alarm-switch",
         "elementContent":
-            makeSwitchTile("images/1.jpg", "images/2.jpg", "Push me!", {
-                onTitle: "ON",
-                onDesc: "None",
-                offTitle: "OFF",
-                offDesc: "None"
+            makeSwitchTile("images/off.jpg", "images/on.jpg", "images/alarm.png", {
+                onTitle: "",
+                onDesc: "",
+                offTitle: "",
+                offDesc: ""
             }),
         "state":
             1
@@ -78,7 +78,7 @@ var Store = function() {
         "elementClass":
             "single-row first-order-menu",
         "elementContent":
-            makeTile("images/1.jpg")
+            makeTile("images/help.png")
         }
     ];
 
@@ -88,14 +88,21 @@ var Store = function() {
         "elementClass":
             "single-row temp-tile",
         "elementContent":
-            makeTemperatureTile("images/1.jpg")
+            makeTemperatureTile("images/kitchen.png")
         },
         {"elementId":
             "temp-room-2",
         "elementClass":
             "single-row temp-tile",
         "elementContent":
-            makeTemperatureTile("images/1.jpg")
+            makeTemperatureTile("images/bedroom.png")
+        }
+		{"elementId":
+            "temp-room-3",
+        "elementClass":
+            "single-row temp-tile",
+        "elementContent":
+            makeTemperatureTile("images/bathroom.png")
         }
     ];
 
@@ -103,13 +110,13 @@ var Store = function() {
         {"elementId":
             "blinds-room-1",
         "elementClass":
-            "single-row",
+            "single-row blind-menu",
         "elementContent":
-            makeSwitchTile("images/1.jpg", "images/2.jpg", "Push me!", {
-                onTitle: "ON",
-                onDesc: "None",
-                offTitle: "OFF",
-                offDesc: "None"
+            makeSwitchTile("images/blind_down.png", "images/blind_up.png", "kitchen.png", {
+                onTitle: "",
+                onDesc: "",
+                offTitle: "",
+                offDesc: ""
             }),
         "state":
             0
@@ -119,11 +126,11 @@ var Store = function() {
         "elementClass":
             "single-row",
         "elementContent":
-            makeSwitchTile("images/1.jpg", "images/2.jpg", "Push me!", {
-                onTitle: "ON",
-                onDesc: "None",
-                offTitle: "OFF",
-                offDesc: "None"
+            makeSwitchTile("images/blind_down.png", "images/blind_up.png", "bedroom.png", {
+                onTitle: "",
+                onDesc: "",
+                offTitle: "",
+                offDesc: ""
             }),
         "state":
             0
