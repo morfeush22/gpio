@@ -64,7 +64,7 @@ var Store = function() {
         "elementClass":
             "single-row alarm-switch",
         "elementContent":
-            makeSwitchTile("images/off.jpg", "images/on.jpg", "images/alarm.png", {
+            makeSwitchTile("images/off.png", "images/on.png", "images/alarm.png", {
                 onTitle: "\"\"",
                 onDesc: "\"\"",
                 offTitle: "\"\"",
