@@ -124,14 +124,14 @@ div.menu-title, .settings#load-options {
 	float: left;
 }
 .tile-button {
-	width: 70%;
-	height: 70%;
+	width: 50%;
+	height: 50%;
 	
 	
 }
 
-.cycle-slideshow > img {
-	width: 70%;
+.cycle-slideshow  {
+	width: 30%;
 	
 }
 
