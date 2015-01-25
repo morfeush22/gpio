@@ -79,10 +79,10 @@ LightingMenuView.makeTile = function(roomName, state) {
     		"single-row",
     	"elementContent":
     		makeCycleTileElement("images/light_off.png", "images/light_on.png", "images/" + roomName + ".png", {
-                onTitle: "",
-                onDesc: "",
-                offTitle: "",
-                offDesc: ""
+                onTitle: "\"\"",
+                onDesc: "\"\"",
+                offTitle: "\"\"",
+                offDesc: "\"\""
     		}),
     	"state":
     		state

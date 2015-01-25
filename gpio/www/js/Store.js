@@ -65,10 +65,10 @@ var Store = function() {
             "single-row alarm-switch",
         "elementContent":
             makeSwitchTile("images/off.jpg", "images/on.jpg", "images/alarm.png", {
-                onTitle: "",
-                onDesc: "",
-                offTitle: "",
-                offDesc: ""
+                onTitle: "\"\"",
+                onDesc: "\"\"",
+                offTitle: "\"\"",
+                offDesc: "\"\""
             }),
         "state":
             1
@@ -112,11 +112,11 @@ var Store = function() {
         "elementClass":
             "single-row blind-menu",
         "elementContent":
-            makeSwitchTile("images/blind_down.png", "images/blind_up.png", "kitchen.png", {
-                onTitle: "",
-                onDesc: "",
-                offTitle: "",
-                offDesc: ""
+            makeSwitchTile("images/blind_down.png", "images/blind_up.png", "images/kitchen.png", {
+                onTitle: "\"\"",
+                onDesc: "\"\"",
+                offTitle: "\"\"",
+                offDesc: "\"\""
             }),
         "state":
             0
@@ -126,11 +126,11 @@ var Store = function() {
         "elementClass":
             "single-row",
         "elementContent":
-            makeSwitchTile("images/blind_down.png", "images/blind_up.png", "bedroom.png", {
-                onTitle: "",
-                onDesc: "",
-                offTitle: "",
-                offDesc: ""
+            makeSwitchTile("images/blind_down.png", "images/blind_up.png", "images/bedroom.png", {
+                onTitle: "\"\"",
+                onDesc: "\"\"",
+                offTitle: "\"\"",
+                offDesc: "\"\""
             }),
         "state":
             0
