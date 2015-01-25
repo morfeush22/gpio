@@ -78,7 +78,6 @@ div.menu-title, .settings#load-options {
 	display: inline-block;
 	color: white;
 	float: left;
-	margin-right: 20px;
 }
 
 .cycle-slideshow {
@@ -124,15 +123,16 @@ div.menu-title, .settings#load-options {
 	padding: 15px;
 	width: 100%;
 	z-index: 600;
+	display: inline-block;
+	float: left;
 }
 .tile-button > img {
-	width: 80%;
+	width: 70%;
 	
 }
 
 .cycle-slideshow > img {
-	width: 80%;
-	height: 75%;
+	width: 70%;
 	
 }
 
