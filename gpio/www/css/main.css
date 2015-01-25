@@ -55,9 +55,7 @@ div.menu-title, .settings#load-options {
 	font-size: 200%;
 	margin-bottom: 30px;
 	display: block;
-	width: 400px;
 	position: relative;
-	left: 37.5%;
 	font-family: Arial;
 	text-align: center;
 	
@@ -146,7 +144,7 @@ div.menu-title, .settings#load-options {
 	width: 400px;
 }
 .light-menu, .blind-menu > img{
-	width: 580px;
+	width: 100%;
 }
 
 #temperature-menu, #lighting-menu, #blinds-menu, #help-message {
