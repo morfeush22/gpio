@@ -64,6 +64,7 @@ div.menu-title, .settings#load-options {
 	margin-bottom: 10 px;
 	margin-left: 0px;
 	display: block;
+	height: 100%;
 	position: relative;
 }
 
@@ -76,12 +77,11 @@ div.menu-title, .settings#load-options {
 
 }
 
-.cycle-slideshow, .cycle-slide, .cycle-sentinel {
+.cycle-slideshow, .cycle-slide {
 	display: inline-block;
 	width: 30%;
-	height: 70%;
 }
-.cicle-slideshow > img, .cycle-slide > img, .cycle-sentinel > img{
+.cicle-slideshow > img, .cycle-sentinel > img{
 	max-width:100%;
 	max-height:100%;
 } 
@@ -146,8 +146,6 @@ div.menu-title, .settings#load-options {
 }
 .alarm-switch{
 	width: 400px;
-}
-.light-menu, .blind-menu > img{
 }
 
 #temperature-menu, #lighting-menu, #blinds-menu, #help-message {
