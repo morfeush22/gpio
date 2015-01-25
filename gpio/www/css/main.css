@@ -79,7 +79,7 @@ div.menu-title, .settings#load-options {
 .cycle-slideshow, .cycle-slide, .cycle-sentinel {
 	display: inline-block;
 	width: 30%;
-	height: 100%;
+	height: 70%;
 }
 .cicle-slideshow > img, .cycle-slide > img, .cycle-sentinel > img{
 	max-width:100%;
