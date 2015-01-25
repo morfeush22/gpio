@@ -79,6 +79,7 @@ div.menu-title, .settings#load-options {
 .cycle-slideshow {
 	display: inline-block;
 	width: 20%;
+	height: 70%;
 }
 .cicle-slideshow > img , .tile-button > img{
 	max-width:100%;
