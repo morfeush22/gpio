@@ -10,17 +10,19 @@
         <link rel="stylesheet" type="text/css" href="css/jquery-ui-slider-pips.css">
         <link rel="stylesheet" type="text/css" href="css/main.css">
 
-        <title>GPIO</title>
+        <title>Smart House</title>
     </head>
     <body>
         <script id="startup-dialog-tpl" type="text/x-handlebars-template">
             <div class="common-background">
-                <div class="validate-tips">Please enter IP.
-                <form>
-                    <label for="ip">IP</label>
-                    <input type="text" name="ip" id="ip" value="" class="startup-dialog-form">
-                    <input type="submit" value="Submit">
-                </form></div>
+                <div class="validate-tips">
+                    Please enter IP.
+                    <form>
+                        <label for="ip">IP</label>
+                        <input type="text" name="ip" id="ip" value="" class="startup-dialog-form">
+                        <input type="submit" value="Submit">
+                    </form>
+                </div>
             </div>
         </script>
 
@@ -33,43 +35,44 @@
         </script>
 
         <script id="help-tpl" type="text/x-handlebars-template">
-            <div class="single-row back-button"><img src="images/back.png"></div>
+            <div class="single-row back-button">
+                <img src="images/back.png">
+            </div>
             <div id="help">
-                <a href="tel:530303994">call me</a>
+                <a href="tel:530303994">Call me!</a>
             </div>
         </script>
 
         <script id="reconnect-tpl" type="text/x-handlebars-template">
-        <div class="common-background">
-            <button type="button" id="load-options">Options!</button>
-            <button type="button" id="load-help">Help!</button>
-            <div id="reconnect">
-                Reconnecting!
-            </div>
-		</div>
+            <div class="common-background">
+                <button type="button" id="load-options">Options!</button>
+                <button type="button" id="load-help">Help!</button>
+                <div id="reconnect">
+                    Reconnecting!
+                </div>
+    		</div>
         </script>
 
         <script id="error-tpl" type="text/x-handlebars-template">
             <div class="background">
-			<div id="error">
-                <p>Something gone wrong.</p><p> Please tap the button and re-enter IP.</p>
-				<button type="button" id="reload-app">Restart!</button> 
-			</div>
-
-		</div>
+    			<div id="error">
+                    <p>Something gone wrong.</p>
+                    <p> Please tap the button and re-enter IP.</p>
+    				<button type="button" id="reload-app">Restart!</button> 
+    			</div>
+            </div>
         </script>
 
         <script id="options-menu-tpl" type="text/x-handlebars-template">
             <div class="common-background">
-				<div class="options-validate-tips">Options
+				<div class="options-validate-tips">
+                    Options
 					<form>
 						<label for="ip">IP</label>
 						<input type="text" name="ip" id="ip" value="" class="startup-dialog-form">
 						<input type="submit" value="Submit">
-					</form>
-				
-				</div>
-				
+					</form>				
+				</div>			
 			</div>
 			<div class="back-button"><img src="images/arrow.png"></div>	
         </script>

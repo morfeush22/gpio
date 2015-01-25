@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="smarthouse" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.smarthouse" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Smart House</name>
     <description>
         Smart House.
     </description>
-    <author email="patro.kacper@gmail.com" href="http://phonegap.com">
+    <author email="patro.kacper@gmail.com" href="http://smarthouse.com">
         Kacper Patro and Kacper Zych
     </author>
     <content src="index.html" />
