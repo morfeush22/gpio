@@ -55,9 +55,9 @@ LightingMenuView.updateView = function(store, socket) {
 };
 
 LightingMenuView.makeTile = function(roomName, state) {
-	var makeCycleTileElement = function(firstImage, secondImage, buttonText, descArgs) {
+	var makeCycleTileElement = function(firstImage, secondImage, buttonImage, descArgs) {
 	    return "<div class='tile-button'>" +
-	             "<span>" + buttonText + "</span>" +
+	             "<img src=" + buttonImage + ">" +
 	         "</div>" +
 	         "<div class='cycle-slideshow'\
 	             data-cycle-fx=fadeout\
@@ -78,11 +78,11 @@ LightingMenuView.makeTile = function(roomName, state) {
 		"elementClass":
     		"single-row",
     	"elementContent":
-    		makeCycleTileElement("images/1.jpg", "images/2.jpg", "Push me!", {
-                onTitle: "ON",
-                onDesc: "None",
-                offTitle: "OFF",
-                offDesc: "None"
+    		makeCycleTileElement("images/light_off.png", "images/light_on.png", "images/" + roomName + ".png", {
+                onTitle: "",
+                onDesc: "",
+                offTitle: "",
+                offDesc: ""
     		}),
     	"state":
     		state

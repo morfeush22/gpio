@@ -96,7 +96,7 @@ var Store = function() {
             "single-row temp-tile",
         "elementContent":
             makeTemperatureTile("images/bedroom.png")
-        }
+        },
 		{"elementId":
             "temp-room-3",
         "elementClass":
