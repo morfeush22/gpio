@@ -124,7 +124,7 @@ var Store = function() {
         {"elementId":
             "blinds-room-2",
         "elementClass":
-            "single-row",
+            "single-row blind-menu",
         "elementContent":
             makeSwitchTile("images/blind_down.png", "images/blind_up.png", "images/bedroom.png", {
                 onTitle: "\"\"",
