@@ -53,12 +53,16 @@ LightingMenuView.updateView = function(store, socket) {
         });
     });
 
+    var windowWidth = $(window).width();
+
 	tileButtons.each(function() {
 		var cycleSlideshow = $(this).next(".cycle-slideshow");
 		
-		$(this).css("width", parseInt(0.6*$(window).width()));
-		var height = $(this).height();
-		cycleSlideshow.css("height", height);
+		$(this).css("width", parseInt(0.6*windowWidth));
+		window.setTimeout($.proxy(function() {
+			var height = this.offsetHeight;
+			cycleSlideshow.css("height", height);
+		}, this), 0);
 	});    
 };
 

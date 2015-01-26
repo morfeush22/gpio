@@ -16,8 +16,10 @@ var HelpView = function(store) {
 };
 
 HelpView.updateView = function(store) {
+	var windowWidth = $(window).width();
+
     $("body").find(".help-menu").each(function() {
-        $(this).css("width", parseInt(0.8*$(window).width()));
+        $(this).css("width", parseInt(0.8*windowWidth));
     });
 };
 

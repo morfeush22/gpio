@@ -24,10 +24,14 @@ BlindsMenuView.updateView = function(store) {
 
     tileButtons.each(function() {
 		var cycleSlideshow = $(this).next(".cycle-slideshow");
+
+		var windowWidth = $(window).width();
 		
-		$(this).css("width", parseInt(0.6*$(window).width()));
-		var height = $(this).height();
-		cycleSlideshow.css("height", height);
+		$(this).css("width", parseInt(0.6*windowWidth));
+		window.setTimeout($.proxy(function() {
+			var height = this.offsetHeight;
+			cycleSlideshow.css("height", height);
+		}, this), 0);
 	});
 };
 

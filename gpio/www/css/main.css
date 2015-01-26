@@ -1,5 +1,4 @@
 body {
-	line-height: 0px;
 }
 
 .validate-tips, .options-validate-tips {
@@ -60,8 +59,9 @@ div.menu-title, .settings#load-options {
 	margin-bottom: 10px;
 	margin-left: 0px;
 	display: block;
-	height: 100%;
+	height: auto;
 	position: relative;
+	line-height: 0px;
 }
 
 .cycle-slideshow {

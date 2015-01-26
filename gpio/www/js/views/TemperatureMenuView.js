@@ -32,10 +32,14 @@ TemperatureMenuView.updateView = function() {
 
     temperatureInfo.each(function() {
 		var tempSlider = $(this).prev(".temp-slider");
+
+		var windowWidth = $(window).width();
 		
-		$(this).css("width", parseInt(0.6*$(window).width()));
-		var height = $(this).height();
-		tempSlider.css("height", height);
+		$(this).css("width", parseInt(0.6*windowWidth));
+		window.setTimeout($.proxy(function() {
+			var height = this.offsetHeight;
+			tempSlider.css("height", height);
+		}, this), 0);
 	});
 };
 
