@@ -8,18 +8,17 @@ div.temp-slider {
 }
 
 .validate-tips, .options-validate-tips {
-	
-		
+	margin-top: 20px;
 }
 
 .common-background {
-	display: table-cell;
+	display: block;
 	background-image: url('../images/background.png');
+	background-size: 100% 150px;
 	background-repeat: no-repeat;
 	width: 70%;
-	height:150px;
+	height: 150px;	
 	position: relative;
-	display: block;
 	text-align: center;
 	margin-top: 15%;
 	font-family: tahoma;
@@ -39,18 +38,16 @@ div.temp-slider {
 	-moz-animation: fade-in-out 2.5s infinite; 
 	-o-animation: fade-in-out 2.5s infinite; 
 	animation: fade-in-out 2.5s infinite;
-	width:400px;
-	height:150px;
+	width: auto;
+	height:100%;
 }
 
 #error{
-	display: table-cell;
+	
 	font-size: 100%;
 	margin-left: 10%;
 	margin-right: 10%;
-	width:400px;
-	height:150px;
-	vertical-align: middle;
+	text-align: center;
 }
 @font-face {
     font-family: CustomFont;
@@ -62,9 +59,8 @@ div.menu-title, .settings#load-options {
 	display: block;
 	position: relative;
 	font-family: CustomFont;
+	text-align: left;
 	color: #464646;
-	
-	text-align: center;
 }
 
 .single-row {
