@@ -14,6 +14,7 @@ var app = {
         this.socket = new Socket(this.store);
         //be carefull with this "this"
         document.addEventListener("resume", this.socket.syncReq(), false);
+        document.addEventListener("orientationchange"), this.registerEvents(hash), true);
     },
 
     initialize: function() {
@@ -125,6 +126,5 @@ var app = {
         }
 
         this.registerEvents(hash);
-        //window.setTimeout($.proxy(, this), 500);
     }
 };
