@@ -23,17 +23,13 @@ var app = {
     },
 
     bindEvents: function() {
-        document.addEventListener("deviceready", this.startupDialog, false);
+        //document.addEventListener("deviceready", this.startupDialog, false);
         //so to emulate this one:
-        //this.startupDialog();
+        this.startupDialog();
         $(window).on("hashchange", $.proxy(this.route, this));
     },
 
     onReady: function() {
-        //to test presence of ip
-        //console.log(localStorage.getItem("ip"));
-        //and delete
-        //localStorage.removeItem("ip"); //!!!
         window.location.hash = "#connect";
         app.receivedEvent('ready');
         window.setTimeout($.proxy(this.setup, this), 2000);
@@ -44,45 +40,33 @@ var app = {
     },
 
     registerEvents: function(hash) {
-        //dummy for showing purporses
-        var matchAndCycle = function(elements, store) {
-            elements.each(function() {
-                var that = this;
-
-                $(this).cycle("goto", store.allMenuElements.filter(function(item) {
-                    return item.elementId === $(that).parent().attr("id");
-                })[0].state);
-            });
-        };
-
-        //dummy for showing purporses
-        var elements = $("body").find(".cycle-slideshow").each(function() {
-            $(this).cycle();
-        });
-
         if (typeof app.socket !== "undefined") {
             if (!app.socket.getSocket().socket.reconnecting) {
                 switch(hash) {
                     case "#temperature-menu":
-                        matchAndCycle(elements, app.store);                        
+                        TemperatureMenuView.updateView();                       
                         break;
                     case "#lighting-menu":
                         LightingMenuView.updateView(app.store, app.socket);
                         break;
                     case "#blinds-menu":
-                        matchAndCycle(elements, app.store);
+                        BlindsMenuView.updateView();
                         break;
                     case "#options":
+                        break;
                     case "#help":
+                        HelpView.updateView();
                     case "#error":
                         break;
                     default:
-                        matchAndCycle(elements, app.store);
+                        MainMenuView.updateView();
                 }
             } else {
                 switch(hash) {
                     case "#options":
+                        break;
                     case "#help":
+                        HelpView.updateView();
                     default:
                         break;
                 }
@@ -113,7 +97,7 @@ var app = {
                         $("body").html(new OptionsView().render().element);
                         break;
                     case "#help":
-                        $("body").html(new HelpView().render().element);
+                        $("body").html(new HelpView(this.store.helpMenuElements).render().element);
                         break;
                     case "#error":
                         $("body").html(new ErrorView().render().element);
@@ -141,5 +125,6 @@ var app = {
         }
 
         this.registerEvents(hash);
+        //window.setTimeout($.proxy(, this), 500);
     }
 };

@@ -47,11 +47,23 @@ LightingMenuView.updateView = function(store, socket) {
 	    })[0].state);
 	});
 
-	$("body").find(".tile-button").each(function() {
+	var tileButtons = $("body").find(".tile-button").each(function() {
         $(this).on("click", function() {
             socket.registerEvents(this);
         });
     });
+
+    var windowWidth = $(window).width();
+
+	tileButtons.each(function() {
+		var cycleSlideshow = $(this).next(".cycle-slideshow");
+		
+		$(this).css("width", parseInt(0.6*windowWidth));
+		window.setTimeout($.proxy(function() {
+			var height = this.offsetHeight;
+			cycleSlideshow.css("height", height);
+		}, this), 0);
+	});    
 };
 
 LightingMenuView.makeTile = function(roomName, state) {

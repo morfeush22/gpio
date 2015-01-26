@@ -27,4 +27,20 @@ var TemperatureMenuView = function(store) {
 	this.initialize();
 };
 
+TemperatureMenuView.updateView = function() {
+    var temperatureInfo = $("body").find(".temperature-info");
+
+    temperatureInfo.each(function() {
+		var tempSlider = $(this).prev(".temp-slider");
+
+		var windowWidth = $(window).width();
+		
+		$(this).css("width", parseInt(0.6*windowWidth));
+		window.setTimeout($.proxy(function() {
+			var height = this.offsetHeight;
+			tempSlider.css("height", height);
+		}, this), 0);
+	});
+};
+
 TemperatureMenuView.template = Handlebars.compile($("#temperature-menu-tpl").html());

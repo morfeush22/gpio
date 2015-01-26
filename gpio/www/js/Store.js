@@ -28,12 +28,19 @@ var Store = function() {
             "</div>";
     };
 
+    var makeHelpTile = function(image, number) {
+        return "<a href=" + number + ">" +
+            "<img src=" + image + ">" +
+            "</a>";
+    };
+
     this.update = function() {
         this.allMenuElements = [].concat.apply([], [
             this.mainMenuElements,
             this.temperatureMenuElements,
             this.blindsMenuElements,
-            this.lightingMenuElements
+            this.lightingMenuElements,
+            this.helpMenuElements
         ]);
     };
 
@@ -137,13 +144,45 @@ var Store = function() {
         }
     ];
 
+    this.helpMenuElements = [
+        {"elementId":
+            "help-112",
+        "elementClass":
+            "single-row help-menu",
+        "elementContent":
+            makeHelpTile("images/112.png", "tel:112")
+        },
+        {"elementId":
+            "help-999",
+        "elementClass":
+            "single-row help-menu",
+        "elementContent":
+            makeHelpTile("images/999.png", "tel:999")
+        },
+        {"elementId":
+            "help-998",
+        "elementClass":
+            "single-row help-menu",
+        "elementContent":
+            makeHelpTile("images/998.png", "tel:998")
+        },
+        {"elementId":
+            "help-997",
+        "elementClass":
+            "single-row help-menu",
+        "elementContent":
+            makeHelpTile("images/997.png", "tel:997")
+        }
+    ];
+
     this.lightingMenuElements = [];
 
     this.allMenuElements = [].concat.apply([], [
         this.mainMenuElements,
         this.temperatureMenuElements,
         this.blindsMenuElements,
-        this.lightingMenuElements
+        this.lightingMenuElements,
+        this.helpMenuElements
     ]);
 
 };

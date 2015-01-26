@@ -6,23 +6,21 @@
         <meta name="msapplication-tap-highlight" content="no" />
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
 
-        <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
-        <link rel="stylesheet" type="text/css" href="css/jquery-ui-slider-pips.css">
         <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
+        <link rel="stylesheet" type="text/css" href="css/jquery-ui-slider-pips.css">     
 
         <title>Smart House</title>
     </head>
     <body>
         <script id="startup-dialog-tpl" type="text/x-handlebars-template">
             <div class="common-background">
-                <div class="validate-tips">
-                    Please enter IP.
-                    <form>
-                        <label for="ip">IP</label>
-                        <input type="text" name="ip" id="ip" value="" class="startup-dialog-form">
-                        <input type="submit" value="Submit">
-                    </form>
-                </div>
+                <div class="validate-tips">Please enter IP.</div>
+                <form>
+                    <label for="ip">IP</label>
+                    <input type="text" name="ip" id="ip" value="" class="startup-dialog-form">
+                    <input type="submit" value="Submit">
+                </form>
             </div>
         </script>
 
@@ -35,12 +33,12 @@
         </script>
 
         <script id="help-tpl" type="text/x-handlebars-template">
-            <div class="single-row back-button">
-                <img src="images/back.png">
-            </div>
-            <div id="help">
-                <a href="tel:530303994">Call me!</a>
-            </div>
+            <div class="single-row back-button"><img src="images/back.png"></div>
+            {{#each this}}
+                <div class="{{this.elementClass}}" id="{{this.elementId}}">
+                    {{{this.elementContent}}}
+                </div>
+            {{/each}}
         </script>
 
         <script id="reconnect-tpl" type="text/x-handlebars-template">
@@ -54,7 +52,7 @@
         </script>
 
         <script id="error-tpl" type="text/x-handlebars-template">
-            <div class="background">
+            <div class="common-background">
     			<div id="error">
                     <p>Something gone wrong.</p>
                     <p> Please tap the button and re-enter IP.</p>
