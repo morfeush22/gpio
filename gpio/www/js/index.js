@@ -23,9 +23,9 @@ var app = {
     },
 
     bindEvents: function() {
-        document.addEventListener("deviceready", this.startupDialog, false);
+        //document.addEventListener("deviceready", this.startupDialog, false);
         //so to emulate this one:
-        //this.startupDialog();
+        this.startupDialog();
         $(window).on("hashchange", $.proxy(this.route, this));
     },
 
@@ -44,40 +44,24 @@ var app = {
     },
 
     registerEvents: function(hash) {
-        //dummy for showing purporses
-        var matchAndCycle = function(elements, store) {
-            elements.each(function() {
-                var that = this;
-
-                $(this).cycle("goto", store.allMenuElements.filter(function(item) {
-                    return item.elementId === $(that).parent().attr("id");
-                })[0].state);
-            });
-        };
-
-        //dummy for showing purporses
-        var elements = $("body").find(".cycle-slideshow").each(function() {
-            $(this).cycle();
-        });
-
         if (typeof app.socket !== "undefined") {
             if (!app.socket.getSocket().socket.reconnecting) {
                 switch(hash) {
                     case "#temperature-menu":
-                        matchAndCycle(elements, app.store);                        
+                        TemperatureMenuView.updateView();                       
                         break;
                     case "#lighting-menu":
                         LightingMenuView.updateView(app.store, app.socket);
                         break;
                     case "#blinds-menu":
-                        matchAndCycle(elements, app.store);
+                        BlindsMenuView.updateView();
                         break;
                     case "#options":
                     case "#help":
                     case "#error":
                         break;
                     default:
-                        matchAndCycle(elements, app.store);
+                        MainMenuView.updateView();
                 }
             } else {
                 switch(hash) {
