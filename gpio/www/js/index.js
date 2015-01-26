@@ -23,9 +23,9 @@ var app = {
     },
 
     bindEvents: function() {
-        //document.addEventListener("deviceready", this.startupDialog, false);
+        document.addEventListener("deviceready", this.startupDialog, false);
         //so to emulate this one:
-        this.startupDialog();
+        //this.startupDialog();
         $(window).on("hashchange", $.proxy(this.route, this));
     },
 
