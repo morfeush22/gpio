@@ -1,4 +1,6 @@
 body {
+	background-image: url('../images/all_background.png');
+	background-repeat: no-repeat;
 }
 
 div.temp-slider {
@@ -6,16 +8,15 @@ div.temp-slider {
 }
 
 .validate-tips, .options-validate-tips {
-	display: table-cell;
-	width:400px;
-	height:150px;
-	vertical-align: middle;
-	font-size: 125%;	
+	
+		
 }
 
 .common-background {
+	display: table-cell;
 	background-image: url('../images/background.png');
-	width:400px;
+	background-repeat: no-repeat;
+	width: 70%;
 	height:150px;
 	position: relative;
 	display: block;
@@ -23,6 +24,8 @@ div.temp-slider {
 	margin-top: 15%;
 	font-family: tahoma;
 	color: #ffffff;
+	vertical-align: middle;
+	font-size: 125%;
 }
 
 #connect {
@@ -49,13 +52,18 @@ div.temp-slider {
 	height:150px;
 	vertical-align: middle;
 }
-
+@font-face {
+    font-family: CustomFont;
+    src: url(../images/erasl.ttf);
+}
 div.menu-title, .settings#load-options {
-	font-size: 200%;
+	font-size: 400%;
 	margin-bottom: 30px;
 	display: block;
 	position: relative;
-	font-family: Arial;
+	font-family: CustomFont;
+	color: #464646;
+	
 	text-align: center;
 }
 
