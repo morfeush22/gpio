@@ -15,4 +15,10 @@ var HelpView = function(store) {
 	this.initialize();
 };
 
+HelpView.updateView = function(store) {
+    $("body").find(".help-menu").each(function() {
+        $(this).css("width", parseInt(0.8*$(window).width()));
+    });
+};
+
 HelpView.template = Handlebars.compile($("#help-tpl").html());

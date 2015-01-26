@@ -53,7 +53,9 @@ var app = {
                         BlindsMenuView.updateView();
                         break;
                     case "#options":
+                        break;
                     case "#help":
+                        HelpView.updateView();
                     case "#error":
                         break;
                     default:
@@ -62,7 +64,9 @@ var app = {
             } else {
                 switch(hash) {
                     case "#options":
+                        break;
                     case "#help":
+                        HelpView.updateView();
                     default:
                         break;
                 }
