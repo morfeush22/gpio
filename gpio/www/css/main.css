@@ -7,29 +7,28 @@ div.temp-slider {
 	margin-bottom: 0 !important;
 }
 
-.validate-tips, .options-validate-tips {
-	margin-top: 20px;
+.validate-tips, .options-validate-tips, .initial-dialog {
+	display: table-row;
+    vertical-align: center;
 }
 
 .common-background {
-	display: block;
-	background-image: url('../images/background.png');
-	background-size: 100% 150px;
-	background-repeat: no-repeat;
-	width: 70%;
-	height: 150px;	
+	display: table;
+	vertical-align: center;
+	background-color: #5674b9;
+	width: 100%;
+	min-height: 150px;	
 	position: relative;
 	text-align: center;
-	margin-top: 15%;
-	font-family: tahoma;
+	margin-top: 40%;
+	font-family: CustomFont;
 	color: #ffffff;
 	vertical-align: middle;
 	font-size: 125%;
 }
 
-#connect {
+#connect, #reconnect {
 	font-size: 125%;
-	position: absolute;
 	top: calc(40%);
 	left: calc(50% - 160px);
 	left: -webkit-calc(50% - 200px);
@@ -48,6 +47,14 @@ div.temp-slider {
 	margin-left: 10%;
 	margin-right: 10%;
 	text-align: center;
+}
+#reload-app img{
+	width: auto;
+	max-height: 15%;
+}
+#load-options, #load-help{
+	position: table-cell;
+
 }
 @font-face {
     font-family: CustomFont;
