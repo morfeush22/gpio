@@ -57,6 +57,7 @@ var app = {
                         break;
                     case "#help":
                         HelpView.updateView();
+                        break;
                     case "#error":
                         break;
                     default:
@@ -68,6 +69,7 @@ var app = {
                         break;
                     case "#help":
                         HelpView.updateView();
+                        break;
                     default:
                         break;
                 }
