@@ -1,6 +1,10 @@
 body {
 }
 
+div.temp-slider {
+	margin-bottom: 0 !important;
+}
+
 .validate-tips, .options-validate-tips {
 	display: table-cell;
 	width:400px;
@@ -60,7 +64,6 @@ div.menu-title, .settings#load-options {
 	margin-left: 0px;
 	display: block;
 	height: auto;
-	position: relative;
 	line-height: 0px;
 }
 
@@ -89,7 +92,6 @@ div.menu-title, .settings#load-options {
 	width: auto;
 	display: inline-block;
 	color: white;
-	float: left;
 }
 
 .temp-tile {
@@ -132,13 +134,11 @@ div.menu-title, .settings#load-options {
 	width: 100%;
 	z-index: 600;
 	display: inline-block;
-	float: left;
 }
 
 .tile-button {
 	display: inline-block;
 	height: auto;
-	float: left;
 	margin-right: 10px;
 }
 
@@ -148,9 +148,6 @@ div.menu-title, .settings#load-options {
 
 .back-main-menu-button {
 	width: 150px;
-}
-
-.alarm-switch {
 }
 
 /*ANIMATION*/
