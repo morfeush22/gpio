@@ -30,10 +30,6 @@ var app = {
     },
 
     onReady: function() {
-        //to test presence of ip
-        //console.log(localStorage.getItem("ip"));
-        //and delete
-        //localStorage.removeItem("ip"); //!!!
         window.location.hash = "#connect";
         app.receivedEvent('ready');
         window.setTimeout($.proxy(this.setup, this), 2000);
@@ -97,7 +93,7 @@ var app = {
                         $("body").html(new OptionsView().render().element);
                         break;
                     case "#help":
-                        $("body").html(new HelpView().render().element);
+                        $("body").html(new HelpView(this.store.helpMenuElements).render().element);
                         break;
                     case "#error":
                         $("body").html(new ErrorView().render().element);

@@ -1,4 +1,4 @@
-var HelpView = function() {
+var HelpView = function(store) {
 
 	this.initialize = function() {
 		this.element = $("<div/>");
@@ -8,7 +8,7 @@ var HelpView = function() {
 	};
 
 	this.render = function() {
-		this.element.html(HelpView.template());
+		this.element.html(HelpView.template(store));
 		return this;
 	};
 

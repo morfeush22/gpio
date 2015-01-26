@@ -107,7 +107,7 @@ div.menu-title, .settings#load-options {
 	height: 100%;
 }
 
-.first-order-menu {
+.first-order-menu, .help-menu {
 	display: block;
 }
 

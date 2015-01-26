@@ -35,12 +35,12 @@
         </script>
 
         <script id="help-tpl" type="text/x-handlebars-template">
-            <div class="single-row back-button">
-                <img src="images/back.png">
-            </div>
-            <div id="help">
-                <a href="tel:530303994">Call me!</a>
-            </div>
+            <div class="single-row back-button"><img src="images/back.png"></div>
+            {{#each this}}
+                <div class="{{this.elementClass}}" id="{{this.elementId}}">
+                    {{{this.elementContent}}}
+                </div>
+            {{/each}}
         </script>
 
         <script id="reconnect-tpl" type="text/x-handlebars-template">
@@ -54,7 +54,7 @@
         </script>
 
         <script id="error-tpl" type="text/x-handlebars-template">
-            <div class="background">
+            <div class="common-background">
     			<div id="error">
                     <p>Something gone wrong.</p>
                     <p> Please tap the button and re-enter IP.</p>
