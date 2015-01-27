@@ -34,7 +34,7 @@ MainMenuView.updateView = function() {
 		$(this).css("width", parseInt(0.2*windowWidth));
 		window.setTimeout($.proxy(function() {
 			var height = this.offsetHeight;
-			cycleSlideshow.css("height", height);
+			cycleSlideshow.css({"height": height, "width": height});
 		}, this), 0);
 	});
 
