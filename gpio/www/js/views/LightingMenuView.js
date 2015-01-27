@@ -26,7 +26,7 @@ LightingMenuView.setState = function(store, roomName, state) {
 		element.children(".cycle-slideshow").cycle("goto", state);
 };
 
-LightingMenuView.getState = function(item) {
+LightingMenuView.getChangedState = function(item) {
 	var $item = $(item);
 	return {
 		"roomId": $item.parent().attr("id"),
@@ -48,10 +48,10 @@ LightingMenuView.updateView = function(store, socket) {
 	});
 
 	var tileButtons = $("body").find(".tile-button").each(function() {
-        $(this).on("click", function() {
-            socket.registerEvents(this);
-        });
-    });
+	    $(this).on("click", function() {
+	        socket.registerLightEvents(this);
+	    });
+	});
 
     var windowWidth = $(window).width();
 

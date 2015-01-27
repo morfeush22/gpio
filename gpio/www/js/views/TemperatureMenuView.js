@@ -6,6 +6,13 @@ var TemperatureMenuView = function(store) {
 				min: 15,
 				max: 35,
 				step: 1,
+				change: function(event, ui) {
+					var state = (store.temperatureMenuElements.filter(function(item) {
+						return item.elementId === ui.;
+					})[0].state = state);
+
+					store.update();
+				},
 				orientation: "vertical"
 			}).slider("pips").draggable();
 		});
@@ -25,6 +32,10 @@ var TemperatureMenuView = function(store) {
 	};
 
 	this.initialize();
+};
+
+TemperatureMenuView.getState = function(item) {
+	
 };
 
 TemperatureMenuView.updateView = function() {

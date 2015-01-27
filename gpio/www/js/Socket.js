@@ -73,9 +73,9 @@ var Socket = function(store) {
 		});
     };
 
-    this.registerEvents = function(item) {
-		socket.emit("lightChange", LightingMenuView.getState(item));
-    };
+	this.registerLightEvents = function(item) {
+		socket.emit("lightChange", LightingMenuView.getChangedState(item));
+	};
 
     this.syncReq = function() {
     	socket.emit("syncReq");

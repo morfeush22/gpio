@@ -95,21 +95,27 @@ var Store = function() {
         "elementClass":
             "single-row temp-tile",
         "elementContent":
-            makeTemperatureTile("images/kitchen.png")
+            makeTemperatureTile("images/kitchen.png"),
+        "internalState":
+            10
         },
         {"elementId":
             "temp-room-2",
         "elementClass":
             "single-row temp-tile",
         "elementContent":
-            makeTemperatureTile("images/bedroom.png")
+            makeTemperatureTile("images/bedroom.png"),
+        "internalState":
+            20
         },
 		{"elementId":
             "temp-room-3",
         "elementClass":
             "single-row temp-tile",
         "elementContent":
-            makeTemperatureTile("images/bathroom.png")
+            makeTemperatureTile("images/bathroom.png"),
+        "internalState":
+            30
         }
     ];
 
