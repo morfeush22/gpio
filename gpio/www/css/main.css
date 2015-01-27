@@ -10,7 +10,7 @@ div.temp-slider {
 
 .validate-tips, .options-validate-tips, .initial-dialog {
 	display: table-row;
-    vertical-align: center;
+	margin-top: 2%;
 }
 
 .common-background {
@@ -108,6 +108,7 @@ div.menu-title, .settings#load-options {
 	width: auto;
 	display: inline-block;
 	color: white;
+	margin-left: 5%;
 }
 
 .temp-tile {
@@ -117,7 +118,7 @@ div.menu-title, .settings#load-options {
 .temperature-info {
 	display: inline-block;
 	height: auto;
-	margin-left: 10%;
+	margin-left: 5%;
 }
 
 .temperature-info img {
