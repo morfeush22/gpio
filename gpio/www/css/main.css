@@ -19,11 +19,11 @@ div.temp-slider {
 	background-color: #5674b9;
 	width: 100%;
 	min-height: 150px;	
-	position: relative;
+	position: fixed;
+	top: 50%;
+	margin-top: -75px;
 	text-align: center;
-	margin-top: 40%;
 	color: #ffffff;
-	vertical-align: middle;
 	font-size: 125%;
 }
 
