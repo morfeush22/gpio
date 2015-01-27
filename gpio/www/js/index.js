@@ -49,7 +49,7 @@ var app = {
             if (!app.socket.getSocket().socket.reconnecting) {
                 switch(hash) {
                     case "#temperature-menu":
-                        TemperatureMenuView.updateView();                       
+                        TemperatureMenuView.updateView(app.store);                       
                         break;
                     case "#lighting-menu":
                         LightingMenuView.updateView(app.store, app.socket);
@@ -92,25 +92,25 @@ var app = {
             if (!app.socket.getSocket().socket.reconnecting) {
                 switch(hash) {
                     case "#temperature-menu":
-                        $("body").html(new TemperatureMenuView(this.store.temperatureMenuElements).render().element);
+                        $("body").html(new TemperatureMenuView(this.store).render().element);
                         break;
                     case "#lighting-menu":
-                        $("body").html(new LightingMenuView(this.store.lightingMenuElements).render().element);
+                        $("body").html(new LightingMenuView(this.store).render().element);
                         break;
                     case "#blinds-menu":
-                        $("body").html(new BlindsMenuView(this.store.blindsMenuElements).render().element);
+                        $("body").html(new BlindsMenuView(this.store).render().element);
                         break;
                     case "#options":
                         $("body").html(new OptionsView().render().element);
                         break;
                     case "#help":
-                        $("body").html(new HelpView(this.store.helpMenuElements).render().element);
+                        $("body").html(new HelpView(this.store).render().element);
                         break;
                     case "#error":
                         $("body").html(new ErrorView().render().element);
                         break;
                     default:
-                        $("body").html(new MainMenuView(this.store.mainMenuElements).render().element);
+                        $("body").html(new MainMenuView(this.store).render().element);
                 }
             } else {
                 switch(hash) {

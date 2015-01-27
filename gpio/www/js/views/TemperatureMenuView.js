@@ -6,6 +6,14 @@ var TemperatureMenuView = function(store) {
 				min: 15,
 				max: 35,
 				step: 1,
+				change: function(event, ui) {
+					var self = this;
+					var state = (store.temperatureMenuElements.filter(function(item) {
+						return item.elementId === $(self).parent().attr("id");
+					})[0].internalState = ui.value);
+
+					store.update();
+				},
 				orientation: "vertical"
 			}).slider("pips").draggable();
 		});
@@ -19,7 +27,7 @@ var TemperatureMenuView = function(store) {
 	};
 
 	this.render = function() {
-		this.element.html(TemperatureMenuView.template(store));
+		this.element.html(TemperatureMenuView.template(store.temperatureMenuElements));
 		this.registerEvents();
 		return this;
 	};
@@ -27,11 +35,15 @@ var TemperatureMenuView = function(store) {
 	this.initialize();
 };
 
-TemperatureMenuView.updateView = function() {
+TemperatureMenuView.updateView = function(store) {
     var temperatureInfo = $("body").find(".temperature-info");
 
     temperatureInfo.each(function() {
+    	var self = this;
 		var tempSlider = $(this).prev(".temp-slider");
+		tempSlider.slider("value", store.temperatureMenuElements.filter(function(item) {
+			return item.elementId === $(self).parent().attr("id");
+		})[0].internalState);
 
 		var windowWidth = $(window).width();
 		

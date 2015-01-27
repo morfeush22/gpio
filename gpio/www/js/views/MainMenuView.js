@@ -12,14 +12,14 @@ var MainMenuView = function(store) {
 	};
 
 	this.render = function() {
-		this.element.html(MainMenuView.template(store));
+		this.element.html(MainMenuView.template(store.mainMenuElements));
 		return this;
 	};
 
 	this.initialize();
 };
 
-MainMenuView.updateView = function(store) {
+MainMenuView.updateView = function() {
 	var elements = $("body").find(".cycle-slideshow").each(function() {
         $(this).cycle();
     });

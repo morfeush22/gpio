@@ -8,14 +8,14 @@ var BlindsMenuView = function(store) {
 	};
 
 	this.render = function() {
-		this.element.html(BlindsMenuView.template(store));
+		this.element.html(BlindsMenuView.template(store.blindsMenuElements));
 		return this;
 	};
 
 	this.initialize();
 };
 
-BlindsMenuView.updateView = function(store) {
+BlindsMenuView.updateView = function() {
 	var elements = $("body").find(".cycle-slideshow").each(function() {
         $(this).cycle();
     });
