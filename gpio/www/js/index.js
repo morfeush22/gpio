@@ -13,12 +13,12 @@ var app = {
         this.store = new Store();
         this.socket = new Socket(this.store);
         //be carefull with this "this"
-        document.addEventListener("resume", this.socket.syncReq(), false);
-        document.addEventListener("orientationchange", function() {
+        $(window).on("resume", this.socket.syncReq());
+        $(window).on("orientationchange", function() {
             window.setTimeout(function() {
                 app.registerEvents(window.location.hash)
-            }, 1000);        
-        }, true);
+            }, 0);        
+        });
     },
 
     initialize: function() {
@@ -28,9 +28,9 @@ var app = {
     },
 
     bindEvents: function() {
-        //document.addEventListener("deviceready", this.startupDialog, false);
+        document.addEventListener("deviceready", this.startupDialog, false);
         //so to emulate this one:
-        this.startupDialog();
+        //this.startupDialog();
         $(window).on("hashchange", $.proxy(this.route, this));
     },
 
