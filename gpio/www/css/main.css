@@ -39,10 +39,15 @@ div.temp-slider {
 	animation: fade-in-out 2.5s infinite;
 	width: auto;
 	height:100%;
+
 }
 #reconnect {
 	margin-bottom: 2%;
 }
+#connect{
+	margin-top: 5%;
+}
+
 
 #error{
 	
@@ -130,7 +135,6 @@ div.menu-title, .settings#load-options {
 }
 .help-menu {
 	display: block;
-	margin-left: auto;
 }
 
 .first-order-menu img {
