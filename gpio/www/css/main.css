@@ -40,6 +40,9 @@ div.temp-slider {
 	width: auto;
 	height:100%;
 }
+#reconnect {
+	margin-bottom: 2%;
+}
 
 #error{
 	
@@ -47,6 +50,10 @@ div.temp-slider {
 	margin-left: 10%;
 	margin-right: 10%;
 	text-align: center;
+}
+#load-options, #load-help{
+	display: inline-block;
+	margin: 2% 2% 2% 2%;
 }
 
 @font-face {
