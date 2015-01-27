@@ -16,6 +16,7 @@ div.temp-slider {
 .common-background {
 	display: table;
 	background-color: #5674b9;
+	border-radius: 10px;
 	width: 100%;
 	min-height: 150px;	
 	position: fixed;
