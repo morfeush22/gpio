@@ -62,7 +62,7 @@ LightingMenuView.updateView = function(store, socket) {
 		window.setTimeout($.proxy(function() {
 			var height = this.offsetHeight;
 			cycleSlideshow.css("height", height);
-		}, this), 100);
+		}, this), 0);
 	});    
 };
 
