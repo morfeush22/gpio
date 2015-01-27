@@ -167,7 +167,8 @@ div.menu-title, .settings#load-options {
 }
 
 .back-main-menu-button {
-	width: 150px;
+	width: 20%;
+	height: auto;
 }
 
 /*ANIMATION*/
