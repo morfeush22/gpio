@@ -14,7 +14,11 @@ var app = {
         this.socket = new Socket(this.store);
         //be carefull with this "this"
         document.addEventListener("resume", this.socket.syncReq(), false);
-        document.addEventListener("orientationchange", this.registerEvents(window.location.hash), true);
+        document.addEventListener("orientationchange", function() {
+            window.setTimeout(function() {
+                app.registerEvents(window.location.hash)
+            }, 1000);        
+        }, true);
     },
 
     initialize: function() {
