@@ -170,6 +170,11 @@ div.menu-title, .settings#load-options {
 	width: 20%;
 	height: auto;
 }
+.back-main-menu-button {
+	max-width: 100%;
+	height: auto;
+}
+
 
 /*ANIMATION*/
 @-webkit-keyframes fade-in-out{
