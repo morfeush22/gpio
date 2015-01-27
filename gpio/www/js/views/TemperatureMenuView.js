@@ -7,7 +7,7 @@ var TemperatureMenuView = function(store) {
 				max: 35,
 				step: 1,
 				orientation: "vertical"
-			}).slider("pips");
+			}).slider("pips").draggable();
 		});
 	};
 

@@ -14,6 +14,7 @@ var app = {
         this.socket = new Socket(this.store);
         //be carefull with this "this"
         document.addEventListener("resume", this.socket.syncReq(), false);
+        document.addEventListener("orientationchange", this.registerEvents(window.location.hash), true);
     },
 
     initialize: function() {
@@ -56,6 +57,7 @@ var app = {
                         break;
                     case "#help":
                         HelpView.updateView();
+                        break;
                     case "#error":
                         break;
                     default:
@@ -67,6 +69,7 @@ var app = {
                         break;
                     case "#help":
                         HelpView.updateView();
+                        break;
                     default:
                         break;
                 }
@@ -125,6 +128,5 @@ var app = {
         }
 
         this.registerEvents(hash);
-        //window.setTimeout($.proxy(, this), 500);
     }
 };
