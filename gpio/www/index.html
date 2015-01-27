@@ -25,11 +25,11 @@
         </script>
 
         <script id="connect-tpl" type="text/x-handlebars-template">
-			<div class="common-background">
-				<div id="connect">
-					Connecting!
-				</div>
-			</div>
+            <div class="common-background">
+                <div id="connect">
+                    CONECTING...
+                </div>
+            </div>
         </script>
 
         <script id="help-tpl" type="text/x-handlebars-template">
@@ -48,40 +48,40 @@
                 <div id="reconnect">
                     RECONECTING...
                 </div>
-    		</div>
+            </div>
         </script>
 
         <script id="error-tpl" type="text/x-handlebars-template">
             <div class="common-background">
-    			<div id="error">
+                <div id="error">
                     <p>Something gone wrong.</p>
                     <p> Please tap the button and re-enter IP.</p>
-    				<div id="reload-app"><img src="images/restart.png"></div> 
-    			</div>
+                    <div id="reload-app"><img src="images/restart.png"></div> 
+                </div>
             </div>
         </script>
 
         <script id="options-menu-tpl" type="text/x-handlebars-template">
             <div class="common-background">
-				<div class="options-validate-tips">Options</div>
-				<form class="initial-dialog">
-					<label for="ip">IP </label>
-					<input type="text" name="ip" id="ip" value="" class="startup-dialog-form">
-					<input type="submit" value="Submit">
-				</form>							
-			</div>
-			<div class="back-button"><img src="images/back.png"></div>	
+                <div class="options-validate-tips">Options</div>
+                <form class="initial-dialog">
+                    <label for="ip">IP </label>
+                    <input type="text" name="ip" id="ip" value="" class="startup-dialog-form">
+                    <input type="submit" value="Submit">
+                </form>                         
+            </div>
+            <div class="back-button"><img src="images/back.png"></div>  
         </script>
 
-    	<script id="main-menu-tpl" type="text/x-handlebars-template">
-    		<div class="menu-title" id="main-menu-title">Hi! How can i help you?</div>
+        <script id="main-menu-tpl" type="text/x-handlebars-template">
+            <div class="menu-title" id="main-menu-title">Hi! How can i help you?</div>
             {{#each this}}
-    			<div class="{{this.elementClass}}" id="{{this.elementId}}">
-    				{{{this.elementContent}}}
-    			</div>
-    		{{/each}}
-			<div class="main-menu-options" id="load-options"><img src="images/settings.png"></div>
-    	</script>
+                <div class="{{this.elementClass}}" id="{{this.elementId}}">
+                    {{{this.elementContent}}}
+                </div>
+            {{/each}}
+            <div class="main-menu-options" id="load-options"><img src="images/settings.png"></div>
+        </script>
 
         <script id="blinds-menu-tpl" type="text/x-handlebars-template">
             <div class="menu-title" id="blinds-menu-title">Which blinds to close?</div>
@@ -90,7 +90,7 @@
                     {{{this.elementContent}}}
                 </div>
             {{/each}}
-            <div class="single-row back-main-menu-button"><img src="images/back.png"></div>			
+            <div class="single-row back-main-menu-button"><img src="images/back.png"></div>         
         </script>
 
         <script id="lighting-menu-tpl" type="text/x-handlebars-template">
@@ -100,7 +100,7 @@
                     {{{this.elementContent}}}
                 </div>
             {{/each}}
-            <div class="single-row back-main-menu-button"><img src="images/back.png"></div>			
+            <div class="single-row back-main-menu-button"><img src="images/back.png"></div>         
         </script>
 
         <script id="temperature-menu-tpl" type="text/x-handlebars-template">
@@ -110,7 +110,7 @@
                     {{{this.elementContent}}}
                 </div>
             {{/each}}
-            <div class="single-row back-main-menu-button"><img src="images/back.png"></div>			
+            <div class="single-row back-main-menu-button"><img src="images/back.png"></div>         
         </script>
 
         <script type="text/javascript" src="cordova.js"></script>
@@ -122,8 +122,8 @@
         <script type="text/javascript" src="js/jquery/jquery.cycle2.caption2.min.js"></script>
         <script type="text/javascript" src="js/jquery/jquery-ui-slider-pips.min.js"></script>
         <script type="text/javascript" src="js/jquery/jquery.ui.touch-punch.min.js"></script>
-		<script type="text/javascript" src="js/handlebars/handlebars.js"></script>
-		<script type="text/javascript" src="js/views/MainMenuView.js"></script>
+        <script type="text/javascript" src="js/handlebars/handlebars.js"></script>
+        <script type="text/javascript" src="js/views/MainMenuView.js"></script>
         <script type="text/javascript" src="js/views/BlindsMenuView.js"></script>
         <script type="text/javascript" src="js/views/LightingMenuView.js"></script>
         <script type="text/javascript" src="js/views/TemperatureMenuView.js"></script>
@@ -137,7 +137,7 @@
         <script type="text/javascript" src="js/socket/socket.io.js"></script>
 
         <script type="text/javascript" src="js/Socket.js"></script>
-		<script type="text/javascript" src="js/Store.js"></script>
+        <script type="text/javascript" src="js/Store.js"></script>
 
         <script type="text/javascript">
             app.initialize();

@@ -18,6 +18,6 @@ var ReconnectView = function() {
 	};
 
 	this.initialize();
-}
+};
 
 ReconnectView.template = Handlebars.compile($("#reconnect-tpl").html());

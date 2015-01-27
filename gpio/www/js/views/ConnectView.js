@@ -10,6 +10,6 @@ var ConnectView = function() {
 	};
 
 	this.initialize();
-}
+};
 
 ConnectView.template = Handlebars.compile($("#connect-tpl").html());

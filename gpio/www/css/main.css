@@ -40,24 +40,24 @@ div.temp-slider {
 	animation: fade-in-out 2.5s infinite;
 	width: auto;
 	height:100%;
-
 }
+
 #reconnect {
 	margin-bottom: 2%;
 }
-#connect{
+
+#connect {
 	margin-top: 5%;
 }
 
-
-#error{
-	
+#error {
 	font-size: 100%;
 	margin-left: 10%;
 	margin-right: 10%;
 	text-align: center;
 }
-#load-options, #load-help{
+
+#load-options, #load-help {
 	display: inline-block;
 	margin: 2% 2% 2% 2%;
 }
@@ -76,7 +76,6 @@ div.menu-title, .settings#load-options {
 }
 
 .single-row {
-	
 	margin-bottom: 10px;
 	margin-left: 0px;
 	display: block;
@@ -94,12 +93,12 @@ div.menu-title, .settings#load-options {
 	height: 100%;
 }
 
-.cycle-slideshow img{
+.cycle-slideshow img {
 	max-width: 100%;
 	height: 100%;
 }
 
-.tile-button img{
+.tile-button img {
 	width: 100%;
 	height: 100%;
 }
@@ -132,7 +131,7 @@ div.menu-title, .settings#load-options {
 	height: 100%;
 }
 
-.first-order-menu{
+.first-order-menu {
 	display: block;
 }
 .help-menu {
@@ -175,7 +174,6 @@ div.menu-title, .settings#load-options {
 	max-width: 100%;
 	height: auto;
 }
-
 
 /*ANIMATION*/
 @-webkit-keyframes fade-in-out{
