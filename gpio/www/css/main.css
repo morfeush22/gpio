@@ -1,6 +1,7 @@
 body {
 	background-image: url('../images/all_background.png');
 	background-repeat: no-repeat;
+	font-family: CustomFont;
 }
 
 div.temp-slider {
@@ -21,7 +22,6 @@ div.temp-slider {
 	position: relative;
 	text-align: center;
 	margin-top: 40%;
-	font-family: CustomFont;
 	color: #ffffff;
 	vertical-align: middle;
 	font-size: 125%;
@@ -48,14 +48,7 @@ div.temp-slider {
 	margin-right: 10%;
 	text-align: center;
 }
-#reload-app img{
-	width: auto;
-	max-height: 15%;
-}
-#load-options, #load-help{
-	position: table-cell;
 
-}
 @font-face {
     font-family: CustomFont;
     src: url(../images/erasl.ttf);
@@ -65,12 +58,12 @@ div.menu-title, .settings#load-options {
 	margin-bottom: 30px;
 	display: block;
 	position: relative;
-	font-family: CustomFont;
 	text-align: left;
 	color: #464646;
 }
 
 .single-row {
+	
 	margin-bottom: 10px;
 	margin-left: 0px;
 	display: block;
@@ -125,8 +118,12 @@ div.menu-title, .settings#load-options {
 	height: 100%;
 }
 
-.first-order-menu, .help-menu {
+.first-order-menu{
 	display: block;
+}
+.help-menu {
+	display: block;
+	margin-left: auto;
 }
 
 .first-order-menu img {
