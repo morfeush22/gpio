@@ -8,14 +8,14 @@ var HelpView = function(store) {
 	};
 
 	this.render = function() {
-		this.element.html(HelpView.template(store));
+		this.element.html(HelpView.template(store.helpMenuElements));
 		return this;
 	};
 
 	this.initialize();
 };
 
-HelpView.updateView = function(store) {
+HelpView.updateView = function() {
 	var windowWidth = $(window).width();
 
     $("body").find(".help-menu").each(function() {

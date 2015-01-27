@@ -8,7 +8,7 @@ var LightingMenuView = function(store) {
 	};
 
 	this.render = function() {
-		this.element.html(LightingMenuView.template(store));
+		this.element.html(LightingMenuView.template(store.lightingMenuElements));
 		return this;
 	};
 

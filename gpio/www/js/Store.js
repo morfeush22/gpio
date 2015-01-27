@@ -97,7 +97,7 @@ var Store = function() {
         "elementContent":
             makeTemperatureTile("images/kitchen.png"),
         "internalState":
-            10
+            20
         },
         {"elementId":
             "temp-room-2",
@@ -106,7 +106,7 @@ var Store = function() {
         "elementContent":
             makeTemperatureTile("images/bedroom.png"),
         "internalState":
-            20
+            25
         },
 		{"elementId":
             "temp-room-3",
