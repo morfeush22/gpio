@@ -16,7 +16,7 @@ var app = {
         $(window).on("resume", this.socket.syncReq());
         $(window).on("orientationchange", function() {
             window.setTimeout(function() {
-                app.registerEvents(window.location.hash)
+                app.registerEvents(window.location.hash);
             }, 0);        
         });
     },
@@ -30,14 +30,14 @@ var app = {
     bindEvents: function() {
         document.addEventListener("deviceready", this.startupDialog, false);
         //so to emulate this one:
-        //this.startupDialog();
+        this.startupDialog();
         $(window).on("hashchange", $.proxy(this.route, this));
     },
 
     onReady: function() {
         window.location.hash = "#connect";
         app.receivedEvent('ready');
-        window.setTimeout($.proxy(this.setup, this), 2000);
+        window.setTimeout($.proxy(this.setup, this), 1000);
     },
 
     receivedEvent: function(id) {
@@ -49,7 +49,7 @@ var app = {
             if (!app.socket.getSocket().socket.reconnecting) {
                 switch(hash) {
                     case "#temperature-menu":
-                        TemperatureMenuView.updateView(app.store);                       
+                        TemperatureMenuView.updateView(app.store, app.socket);
                         break;
                     case "#lighting-menu":
                         LightingMenuView.updateView(app.store, app.socket);
@@ -118,7 +118,7 @@ var app = {
                         $("body").html(new OptionsView().render().element);
                         break;
                     case "#help":
-                        $("body").html(new HelpView().render().element);
+                        $("body").html(new HelpView(this.store).render().element);
                         break;
                     default:
                         $("body").html(new ReconnectView().render().element);

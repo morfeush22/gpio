@@ -11,7 +11,7 @@ import sys
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret_pass'
-app.config['DEBUG'] = True
+app.config['DEBUG'] = False
 socketio = SocketIO(app)
 
 GPIO.setmode(GPIO.BCM)
@@ -22,6 +22,12 @@ pins = {
 			'light-room-1': [[{'pinNumber': 17, 'state': 0}], {'overallState': 0}],
 			'light-room-2': [[{'pinNumber': 27, 'state': 0}], {'overallState': 0}],
 			'light-room-3': [[{'pinNumber': 22, 'state': 0}], {'overallState': 0}]
+		},
+	'temperature':
+		{
+			'temp-room-1': [[], {'overallState': 15}],
+			'temp-room-2': [[], {'overallState': 20}],
+			'temp-room-3': [[], {'overallState': 25}]
 		}
 }
 
@@ -70,6 +76,26 @@ def handleLightChange(data):
 			'state': pins['light'][roomId][1]['overallState']
 		}, 
 		broadcast=True)
+
+	print "Light change!"
+
+	return
+
+@socketio.on('temperatureChange', namespace='/gpio')
+def handleTemperatureChange(data):
+	roomId = data['roomId']
+	state = data['state']
+
+	pins['temperature'][roomId][1]['overallState'] = state
+
+	emit('serverResponse', {
+			'type': 'temperature',
+			'roomId': roomId,
+			'state': pins['temperature'][roomId][1]['overallState']
+		}, 
+		broadcast=True)
+
+	print "Temp change!"
 
 	return
 

@@ -26,15 +26,15 @@ LightingMenuView.setState = function(store, roomName, state) {
 		element.children(".cycle-slideshow").cycle("goto", state);
 };
 
-LightingMenuView.getChangedState = function(item) {
-	var $item = $(item);
-	return {
-		"roomId": $item.parent().attr("id"),
-		"state": $item.next(".cycle-slideshow").data("cycle.opts").currSlide ? 0:1
-	};
-};
-
 LightingMenuView.updateView = function(store, socket) {
+	var registerLightEvents = function(item) {
+		var $item = $(item);		
+		socket.getSocket().emit("lightChange", {
+			"roomId": $item.parent().attr("id"),
+			"state": $item.next(".cycle-slideshow").data("cycle.opts").currSlide ? 0:1
+		});
+	};
+
 	var elements = $("body").find(".cycle-slideshow").each(function() {
         $(this).cycle();
     });
@@ -49,7 +49,7 @@ LightingMenuView.updateView = function(store, socket) {
 
 	var tileButtons = $("body").find(".tile-button").each(function() {
 	    $(this).on("click", function() {
-	        socket.registerLightEvents(this);
+	        registerLightEvents(this);
 	    });
 	});
 

@@ -36,6 +36,9 @@ var Socket = function(store) {
 						case "light":
 							LightingMenuView.setState(store, roomName, state);
 							break;
+						case "temperature":
+							TemperatureMenuView.setState(store, roomName, state);
+							break;
 					}			
 				});
 			});
@@ -51,7 +54,7 @@ var Socket = function(store) {
 		socket.on('connect', function() {
 			if (window.location.hash === "#options" || window.location.hash === "#help") {
 			} else {
-				window.location.hash = "#";
+				window.location.hash = "#reconnected";
 			}
 			self.syncReq();
 		});
@@ -69,13 +72,13 @@ var Socket = function(store) {
 			switch(msg["type"]) {
 				case "light":
 					LightingMenuView.setState(store, roomName, state);
+					break;
+				case "temperature":
+					TemperatureMenuView.setState(store, roomName, state);
+					break;
 			}		
 		});
     };
-
-	this.registerLightEvents = function(item) {
-		socket.emit("lightChange", LightingMenuView.getChangedState(item));
-	};
 
     this.syncReq = function() {
     	socket.emit("syncReq");
