@@ -1,9 +1,26 @@
+/**
+* Reprezentuje magazyn. Przechowuje elementy menu i ich stany. Zawiera funkcje do tworzenia elementów.
+* @constructor
+**/
 var Store = function() {
 
+    /**
+    * Tworzy element będący zwykłym obrazem.
+    * @function
+    * @param {string} image - Ścieżka do pliku z obrazkiem.
+    **/
     var makeTile = function(image) {
         return "<img src=" + image + ">";
     };
 
+    /**
+    * Tworzy element będący układem zmieniających się obrazów.
+    * @function
+    * @param {string} firstImage - Ścieżka do pliku z obrazkiem.
+    * @param {string} secondImage - Ścieżka do pliku z obrazkiem.
+    * @param {string} buttonImage - Ścieżka do pliku z obrazkiem przycisku.
+    * @param {Object} descArgs - Obiekt definujący podpisy obrazków.
+    **/
     var makeSwitchTile = function(firstImage, secondImage, buttonImage, descArgs) {
         return "<div class='tile-button'>" +
                  "<img src=" + buttonImage + ">" +
@@ -21,6 +38,11 @@ var Store = function() {
              "</div>";
     };
 
+    /**
+    * Tworzy element będący częścią menu Temperature.
+    * @function
+    * @param {string} image - Ścieżka do pliku z obrazkiem.
+    **/
     var makeTemperatureTile = function(image) {
         return "<div class='temp-slider'></div>" +
             "<div class='temperature-info'>" +
@@ -28,12 +50,22 @@ var Store = function() {
             "</div>";
     };
 
+    /**
+    * Tworzy element będący częścią menu Help.
+    * @function
+    * @param {string} image - Łańcuch zawierający numer telefonu.
+    * @param {string} image - Ścieżka do pliku z obrazkiem.
+    **/
     var makeHelpTile = function(image, number) {
         return "<a href=" + number + ">" +
             "<img src=" + image + ">" +
             "</a>";
     };
 
+    /**
+    * Aktualizuje zmienną allMenuElements. Powinna być wywoływana po każdym zmianie stanu elementu.
+    * @function
+    **/
     this.update = function() {
         this.allMenuElements = [].concat.apply([], [
             this.mainMenuElements,
@@ -44,6 +76,10 @@ var Store = function() {
         ]);
     };
 
+    /**
+    * Zawiera elementy menu głównego.
+    * @inner
+    **/
     this.mainMenuElements = [
         {"elementId": 
             "temperature-menu",
@@ -89,6 +125,10 @@ var Store = function() {
         }
     ];
 
+    /**
+    * Zawiera elementy menu Temperature.
+    * @inner
+    **/
     this.temperatureMenuElements = [
         {"elementId":
             "temp-room-1",
@@ -97,7 +137,7 @@ var Store = function() {
         "elementContent":
             makeTemperatureTile("images/kitchen.png"),
         "internalState":
-            20
+            0
         },
         {"elementId":
             "temp-room-2",
@@ -106,7 +146,7 @@ var Store = function() {
         "elementContent":
             makeTemperatureTile("images/bedroom.png"),
         "internalState":
-            25
+            0
         },
 		{"elementId":
             "temp-room-3",
@@ -115,10 +155,14 @@ var Store = function() {
         "elementContent":
             makeTemperatureTile("images/bathroom.png"),
         "internalState":
-            30
+            0
         }
     ];
 
+    /**
+    * Zawiera elementy menu Blinds.
+    * @inner
+    **/
     this.blindsMenuElements = [
         {"elementId":
             "blinds-room-1",
@@ -150,6 +194,10 @@ var Store = function() {
         }
     ];
 
+    /**
+    * Zawiera elementy menu Help.
+    * @inner
+    **/
     this.helpMenuElements = [
         {"elementId":
             "help-112",
@@ -181,8 +229,16 @@ var Store = function() {
         }
     ];
 
+    /**
+    * Zawiera elementy menu Light.
+    * @inner
+    **/
     this.lightingMenuElements = [];
 
+    /**
+    * Zawiera elementy wszystkich menu.
+    * @inner
+    **/
     this.allMenuElements = [].concat.apply([], [
         this.mainMenuElements,
         this.temperatureMenuElements,
@@ -190,5 +246,4 @@ var Store = function() {
         this.lightingMenuElements,
         this.helpMenuElements
     ]);
-
 };

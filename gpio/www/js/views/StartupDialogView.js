@@ -1,5 +1,14 @@
+/**
+* Reprezentuje widok menu startowego.
+* @constructor
+* @param {Object} callback - Funkcja wywoływana po podaniu poprawnego adresu IP serwera.
+**/
 var StartupDialogView = function(callback) {
 
+	/**
+	* Inicjalizuje widok menu startowego.
+	* @function
+	**/
 	this.initialize = function() {
 		var self = this;
 		this.element = $("<div/>");
@@ -10,6 +19,10 @@ var StartupDialogView = function(callback) {
 		});
 	};
 
+	/**
+	* Renderuje widok menu startowego.
+	* @function
+	**/
 	this.render = function() {
 		this.element.html(StartupDialogView.template());
 		return this;
@@ -17,6 +30,10 @@ var StartupDialogView = function(callback) {
 
 	this.initialize();
 
+	/**
+	* Rejestruje widok menu startowego.
+	* @function
+	**/
 	this.updateView = function() {
 		var tips = this.element.find(".validate-tips");
 		var ip = this.element.find("#ip");
@@ -47,6 +64,12 @@ var StartupDialogView = function(callback) {
 		}
 	};
 
+	/**
+	* Wywołuje funkcję callback.
+	* @function
+	* @param {Object} callback - Funkcja wywoływana po podaniu poprawnego adresu IP serwera.
+	* @param {Object} data - Dodatkowe parametry funkcji callback.
+	**/
 	var callLater = function(callback, data) {
         if (callback) {
             setTimeout(function() {
@@ -56,4 +79,8 @@ var StartupDialogView = function(callback) {
     };
 };
 
+/**
+* Prekompiluje szablon widoku menu startowego.
+* @property {object} template - Prekompilowany szablon.
+**/
 StartupDialogView.template = Handlebars.compile($("#startup-dialog-tpl").html());

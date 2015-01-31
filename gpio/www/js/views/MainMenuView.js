@@ -1,3 +1,8 @@
+/**
+* Reprezentuje widok menu głównego.
+* @constructor
+* @param {Object} store - Obiekt magazynu.
+**/
 var MainMenuView = function(store) {
 
 	this.initialize = function() {
@@ -19,6 +24,10 @@ var MainMenuView = function(store) {
 	this.initialize();
 };
 
+/**
+* Rejestruje widok menu głównego.
+* @function
+**/
 MainMenuView.updateView = function() {
 	var elements = $("body").find(".cycle-slideshow").each(function() {
         $(this).cycle();
@@ -47,4 +56,8 @@ MainMenuView.updateView = function() {
     });
 };
 
+/**
+* Prekompiluje szablon widoku menu głównego.
+* @property {object} template - Prekompilowany szablon.
+**/
 MainMenuView.template = Handlebars.compile($("#main-menu-tpl").html());

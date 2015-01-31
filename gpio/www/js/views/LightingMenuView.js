@@ -1,3 +1,8 @@
+/**
+* Reprezentuje widok menu Light.
+* @constructor
+* @param {Object} store - Obiekt magazynu.
+**/
 var LightingMenuView = function(store) {
 	
 	this.initialize = function() {
@@ -15,6 +20,13 @@ var LightingMenuView = function(store) {
 	this.initialize();
 };
 
+/**
+* Ustawia stan elementu menu Light.
+* @function
+* @param {Object} store - Obiekt magazynu.
+* @param {Object} roomName - ID pokoju.
+* @param {Object} state - Stan.
+**/
 LightingMenuView.setState = function(store, roomName, state) {
 	var state = (store.lightingMenuElements.filter(function(item) {
 		return item.elementId === roomName;
@@ -26,15 +38,21 @@ LightingMenuView.setState = function(store, roomName, state) {
 		element.children(".cycle-slideshow").cycle("goto", state);
 };
 
-LightingMenuView.getChangedState = function(item) {
-	var $item = $(item);
-	return {
-		"roomId": $item.parent().attr("id"),
-		"state": $item.next(".cycle-slideshow").data("cycle.opts").currSlide ? 0:1
-	};
-};
-
+/**
+* Rejestruje widok menu Light.
+* @function
+* @param {Object} store - Obiekt magazynu.
+* @param {Object} socket - Obiekt gniazda.
+**/
 LightingMenuView.updateView = function(store, socket) {
+	var registerLightEvents = function(item) {
+		var $item = $(item);		
+		socket.getSocket().emit("lightChange", {
+			"roomId": $item.parent().attr("id"),
+			"state": $item.next(".cycle-slideshow").data("cycle.opts").currSlide ? 0:1
+		});
+	};
+
 	var elements = $("body").find(".cycle-slideshow").each(function() {
         $(this).cycle();
     });
@@ -49,7 +67,7 @@ LightingMenuView.updateView = function(store, socket) {
 
 	var tileButtons = $("body").find(".tile-button").each(function() {
 	    $(this).on("click", function() {
-	        socket.registerLightEvents(this);
+	        registerLightEvents(this);
 	    });
 	});
 
@@ -66,6 +84,12 @@ LightingMenuView.updateView = function(store, socket) {
 	});    
 };
 
+/**
+* Tworzy element będący częścią menu Light.
+* @function
+* @param {Object} roomName - ID pokoju.
+* @param {Object} state - Stan.
+**/
 LightingMenuView.makeTile = function(roomName, state) {
 	var makeCycleTileElement = function(firstImage, secondImage, buttonImage, descArgs) {
 	    return "<div class='tile-button'>" +
@@ -101,4 +125,8 @@ LightingMenuView.makeTile = function(roomName, state) {
 	};
 };
 
+/**
+* Prekompiluje szablon widoku menu Light.
+* @property {object} template - Prekompilowany szablon.
+**/
 LightingMenuView.template = Handlebars.compile($("#lighting-menu-tpl").html());

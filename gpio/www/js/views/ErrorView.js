@@ -1,5 +1,13 @@
+/**
+* Reprezentuje widok menu Error.
+* @constructor
+**/
 var ErrorView = function() {
 
+	/**
+	* Inicjalizuje widok menu Error.
+	* @function
+	**/
 	this.initialize = function() {
 		this.element = $("<div/>");
 		this.element.on("click", "#reload-app", function(event) {
@@ -9,6 +17,10 @@ var ErrorView = function() {
 		});
 	};
 
+	/**
+	* Renderuje widok menu Error.
+	* @function
+	**/
 	this.render = function() {
 		this.element.html(ErrorView.template());
 		return this;
@@ -17,4 +29,8 @@ var ErrorView = function() {
 	this.initialize();
 };
 
+/**
+* Prekompiluje szablon widoku menu Error.
+* @property {object} template - Prekompilowany szablon.
+**/
 ErrorView.template = Handlebars.compile($("#error-tpl").html());

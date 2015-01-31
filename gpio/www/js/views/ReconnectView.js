@@ -1,5 +1,13 @@
+/**
+* Reprezentuje widok menu Reconnect.
+* @constructor
+**/
 var ReconnectView = function() {
 
+	/**
+	* Inicjalizuje widok menu Reconnect.
+	* @function
+	**/
 	this.initialize = function() {
 		this.element = $("<div/>");
 		this.element.on("click", "#load-options", function(event) {
@@ -12,6 +20,10 @@ var ReconnectView = function() {
 		});
 	};
 
+	/**
+	* Renderuje widok menu Reconnect.
+	* @function
+	**/
 	this.render = function() {
 		this.element.html(ReconnectView.template());
 		return this;
@@ -20,4 +32,8 @@ var ReconnectView = function() {
 	this.initialize();
 };
 
+/**
+* Prekompiluje szablon widoku menu Reconnect.
+* @property {object} template - Prekompilowany szablon.
+**/
 ReconnectView.template = Handlebars.compile($("#reconnect-tpl").html());
