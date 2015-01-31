@@ -1,5 +1,14 @@
+/**
+* Reprezentuje gniazdo. Używany do komunikacji z serwerem.
+* @constructor
+* @param {Object} store - Obiekt klasy Store.
+**/
 var Socket = function(store) {
 
+    /**
+    * Inicjalizuje gniazdo.
+    * @function
+    **/
 	this.initialize = function() {
 		var self = this;
 		socket = io.connect("http://" + localStorage.getItem("ip") + ":5000/gpio");
@@ -64,6 +73,10 @@ var Socket = function(store) {
 		});
 	};
 
+    /**
+    * Obsługuje odpowiedzi broadcastowe serwera.
+    * @function
+    **/
     var bindEvents = function() {
     	socket.on('serverResponse', function(msg) {
     		var roomName = msg.roomId;
@@ -80,10 +93,19 @@ var Socket = function(store) {
 		});
     };
 
+    /**
+    * Wymusza przeprowadzenie synchronizacji z serwerem.
+    * @function
+    **/
     this.syncReq = function() {
     	socket.emit("syncReq");
     };
 
+    /**
+    * Zwraca obiekt gniazda.
+    * @function
+    * @returns {Object} - Obiekt gniazda.
+    **/
     this.getSocket = function() {
     	return socket;
     };

@@ -1,5 +1,14 @@
+/**
+* Reprezentuje widok menu Blinds.
+* @constructor
+* @param {Object} store - Obiekt magazynu.
+**/
 var BlindsMenuView = function(store) {
 
+	/**
+	* Inicjalizuje widok menu Blinds.
+	* @function
+	**/
 	this.initialize = function() {
 		this.element = $("<div/>");
 		this.element.on("click", ".back-main-menu-button", function() {
@@ -7,6 +16,10 @@ var BlindsMenuView = function(store) {
 		});
 	};
 
+	/**
+	* Renderuje widok menu Blinds.
+	* @function
+	**/
 	this.render = function() {
 		this.element.html(BlindsMenuView.template(store.blindsMenuElements));
 		return this;
@@ -15,6 +28,11 @@ var BlindsMenuView = function(store) {
 	this.initialize();
 };
 
+
+/**
+* Rejestruje widok menu Blinds.
+* @function
+**/
 BlindsMenuView.updateView = function() {
 	var elements = $("body").find(".cycle-slideshow").each(function() {
         $(this).cycle();
@@ -35,4 +53,8 @@ BlindsMenuView.updateView = function() {
 	});
 };
 
+/**
+* Prekompiluje szablon widoku menu Blinds.
+* @global
+**/
 BlindsMenuView.template = Handlebars.compile($("#blinds-menu-tpl").html());

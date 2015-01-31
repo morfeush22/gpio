@@ -1,5 +1,14 @@
+/**
+* Reprezentuje widok menu Temperature.
+* @constructor
+* @param {Object} store - Obiekt magazynu.
+**/
 var TemperatureMenuView = function(store) {
 
+	/**
+	* Inicjalizuje widok menu Temperature.
+	* @function
+	**/
 	this.initialize = function() {
 		this.element = $("<div/>");
 		this.element.on("click", ".back-main-menu-button", function() {
@@ -7,6 +16,10 @@ var TemperatureMenuView = function(store) {
 		});
 	};
 
+	/**
+	* Renderuje widok menu Temperature.
+	* @function
+	**/
 	this.render = function() {
 		this.element.html(TemperatureMenuView.template(store.temperatureMenuElements));
 		return this;
@@ -15,6 +28,13 @@ var TemperatureMenuView = function(store) {
 	this.initialize();
 };
 
+/**
+* Ustawia stan elementu menu Temperature.
+* @function
+* @param {Object} store - Obiekt magazynu.
+* @param {Object} roomName - ID pokoju.
+* @param {Object} state - Stan.
+**/
 TemperatureMenuView.setState = function(store, roomName, state) {
 	var state = (store.temperatureMenuElements.filter(function(item) {
 		return item.elementId === roomName;
@@ -26,6 +46,12 @@ TemperatureMenuView.setState = function(store, roomName, state) {
 		element.children(".temp-slider").slider("value", state);
 };
 
+/**
+* Rejestruje widok menu Temperature.
+* @function
+* @param {Object} store - Obiekt magazynu.
+* @param {Object} socket - Obiekt gniazda.
+**/
 TemperatureMenuView.updateView = function(store, socket) {
 	var registerTemperatureEvent = function(item, value) {
 		var $item = $(item);
@@ -68,4 +94,8 @@ TemperatureMenuView.updateView = function(store, socket) {
 	});
 };
 
+/**
+* Prekompiluje szablon widoku menu Temperature.
+* @global
+**/
 TemperatureMenuView.template = Handlebars.compile($("#temperature-menu-tpl").html());

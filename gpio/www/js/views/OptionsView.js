@@ -1,5 +1,13 @@
+/**
+* Reprezentuje widok menu Options.
+* @constructor
+**/
 var OptionsView = function() {
 
+	/**
+	* Inicjalizuje widok menu Options.
+	* @function
+	**/
 	this.initialize = function() {
 		var self = this;
 		this.element = $("<div/>");
@@ -12,6 +20,10 @@ var OptionsView = function() {
 		});
 	};
 
+	/**
+	* Renderuje widok menu Options.
+	* @function
+	**/
 	this.render = function() {
 		this.element.html(OptionsView.template());
 		this.element.find("#ip").val(localStorage.getItem("ip"));
@@ -20,6 +32,10 @@ var OptionsView = function() {
 
 	this.initialize();
 
+	/**
+	* Rejestruje widok menu Options.
+	* @function
+	**/
 	this.updateView = function() {
 		var tips = this.element.find(".validate-tips");
 		var ip = this.element.find("#ip");
@@ -52,4 +68,8 @@ var OptionsView = function() {
 	};
 };
 
+/**
+* Prekompiluje szablon widoku menu Options.
+* @global
+**/
 OptionsView.template = Handlebars.compile($("#options-menu-tpl").html());
