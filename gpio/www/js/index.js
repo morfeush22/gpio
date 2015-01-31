@@ -1,6 +1,6 @@
 /**
 * Kontroler aplikacji.
-* @global
+* @namespace
 **/
 var app = {
     /**
