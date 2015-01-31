@@ -70,6 +70,6 @@ var OptionsView = function() {
 
 /**
 * Prekompiluje szablon widoku menu Options.
-* @global
+* @property {object} template - Prekompilowany szablon.
 **/
 OptionsView.template = Handlebars.compile($("#options-menu-tpl").html());

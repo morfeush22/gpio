@@ -42,6 +42,6 @@ HelpView.updateView = function() {
 
 /**
 * Prekompiluje szablon widoku menu Help.
-* @global
+* @property {object} template - Prekompilowany szablon.
 **/
 HelpView.template = Handlebars.compile($("#help-tpl").html());

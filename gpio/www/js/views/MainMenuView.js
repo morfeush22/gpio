@@ -58,6 +58,6 @@ MainMenuView.updateView = function() {
 
 /**
 * Prekompiluje szablon widoku menu głównego.
-* @global
+* @property {object} template - Prekompilowany szablon.
 **/
 MainMenuView.template = Handlebars.compile($("#main-menu-tpl").html());

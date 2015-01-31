@@ -81,6 +81,6 @@ var StartupDialogView = function(callback) {
 
 /**
 * Prekompiluje szablon widoku menu startowego.
-* @global
+* @property {object} template - Prekompilowany szablon.
 **/
 StartupDialogView.template = Handlebars.compile($("#startup-dialog-tpl").html());

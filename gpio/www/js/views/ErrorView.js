@@ -31,6 +31,6 @@ var ErrorView = function() {
 
 /**
 * Prekompiluje szablon widoku menu Error.
-* @global
+* @property {object} template - Prekompilowany szablon.
 **/
 ErrorView.template = Handlebars.compile($("#error-tpl").html());

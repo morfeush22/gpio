@@ -34,6 +34,6 @@ var ReconnectView = function() {
 
 /**
 * Prekompiluje szablon widoku menu Reconnect.
-* @global
+* @property {object} template - Prekompilowany szablon.
 **/
 ReconnectView.template = Handlebars.compile($("#reconnect-tpl").html());

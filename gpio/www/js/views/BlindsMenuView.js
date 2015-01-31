@@ -55,6 +55,6 @@ BlindsMenuView.updateView = function() {
 
 /**
 * Prekompiluje szablon widoku menu Blinds.
-* @global
+* @property {object} template - Prekompilowany szablon.
 **/
 BlindsMenuView.template = Handlebars.compile($("#blinds-menu-tpl").html());

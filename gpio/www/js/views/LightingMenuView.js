@@ -127,6 +127,6 @@ LightingMenuView.makeTile = function(roomName, state) {
 
 /**
 * Prekompiluje szablon widoku menu Light.
-* @global
+* @property {object} template - Prekompilowany szablon.
 **/
 LightingMenuView.template = Handlebars.compile($("#lighting-menu-tpl").html());

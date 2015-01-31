@@ -26,6 +26,6 @@ var ConnectView = function() {
 
 /**
 * Prekompiluje szablon widoku menu Connect.
-* @global
+* @property {object} template - Prekompilowany szablon.
 **/
 ConnectView.template = Handlebars.compile($("#connect-tpl").html());

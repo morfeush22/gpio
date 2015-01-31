@@ -96,6 +96,6 @@ TemperatureMenuView.updateView = function(store, socket) {
 
 /**
 * Prekompiluje szablon widoku menu Temperature.
-* @global
+* @property {object} template - Prekompilowany szablon.
 **/
 TemperatureMenuView.template = Handlebars.compile($("#temperature-menu-tpl").html());
