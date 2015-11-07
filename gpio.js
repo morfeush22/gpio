@@ -33,16 +33,10 @@ for (var key in PINS) {
 
 var ws = io.of('/gpio')
 	.on('connection', function(socket) {
-		var sync = function() {
-			socket.emit('sync', {
-				STATES
-			});			
-		}
-		
-		sync();
+		socket.emit('sync', STATES);
 		
 		socket.on('syncReq', function(data) {
-			sync();
+			socket.emit('sync', STATES);;
 		});
 		
 		socket.on('lightChange', function(data) {
@@ -56,9 +50,7 @@ var ws = io.of('/gpio')
 			
 			STATES['light'][room] = state;
 			
-			socket.broadcast.emit('sync', {
-				STATES
-			});
+			socket.broadcast.emit('sync', STATES);
 		});
 		
 		socket.on('temperatureChange', function(data) {
@@ -67,9 +59,7 @@ var ws = io.of('/gpio')
 			
 			STATES['temperature'][room] = state;
 			
-			socket.broadcast.emit('sync', {
-				STATES
-			});
+			socket.broadcast.emit('sync', STATES);
 		});
 	});
 	
