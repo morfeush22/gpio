@@ -1,3 +1,4 @@
+var fs = require('fs');
 var gpio = require('rpi-gpio');
 var io = require('socket.io')(5000);
 
@@ -11,6 +12,9 @@ var STATES = {
 		'temp-room-1': 15,
 		'temp-room-2': 20,
 		'temp-room-3': 5
+	},
+	'alarm': {
+		'main-alarm': 0
 	}
 };
 
@@ -32,11 +36,26 @@ for (var key in PINS) {
 }
 
 var ws = io.of('/gpio')
-	.on('connection', function(socket) {
-		socket.emit('sync', STATES);
+	.on('connection', function(socket) {	
+		setInterval(function() {
+			fs.readFile('distance', 'utf8', function(err, data) {
+				var oldState = STATES['alarm']['main-alarm'];
+				
+				if (err) {
+					console.log(err);
+				}
+				else {
+					var distance = parseInt(data);
+					var newState = distance < 10000 ? 1 : 0;
+					STATES['alarm']['main-alarm'] = newState;
+					if (newState !== oldState)
+						socket.emit('sync', STATES);
+				}
+			});
+		}, 100);
 		
 		socket.on('syncReq', function(data) {
-			socket.emit('sync', STATES);;
+			socket.emit('sync', STATES);
 		});
 		
 		socket.on('lightChange', function(data) {
@@ -67,6 +86,8 @@ var ws = io.of('/gpio')
 			
 			console.log(STATES);
 		});
+		
+		socket.emit('sync', STATES);
 	});
 	
 process.on('SIGINT', function() {
