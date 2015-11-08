@@ -1,5 +1,5 @@
 var gpio = require('rpi-gpio');
-var io = require('socket.io')(80);
+var io = require('socket.io')(5000);
 
 var STATES = {
 	'light': {
@@ -50,7 +50,10 @@ var ws = io.of('/gpio')
 			
 			STATES['light'][room] = state;
 			
+			socket.emit('sync', STATES);
 			socket.broadcast.emit('sync', STATES);
+			
+			console.log(STATES);
 		});
 		
 		socket.on('temperatureChange', function(data) {
@@ -59,7 +62,10 @@ var ws = io.of('/gpio')
 			
 			STATES['temperature'][room] = state;
 			
+			socket.emit('sync', STATES);
 			socket.broadcast.emit('sync', STATES);
+			
+			console.log(STATES);
 		});
 	});
 	
