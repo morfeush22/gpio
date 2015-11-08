@@ -63,20 +63,6 @@ var Store = function() {
     };
 
     /**
-    * Aktualizuje zmienną allMenuElements. Powinna być wywoływana po każdym zmianie stanu elementu.
-    * @function
-    **/
-    this.update = function() {
-        this.allMenuElements = [].concat.apply([], [
-            this.mainMenuElements,
-            this.temperatureMenuElements,
-            this.blindsMenuElements,
-            this.lightingMenuElements,
-            this.helpMenuElements
-        ]);
-    };
-
-    /**
     * Zawiera elementy menu głównego.
     * @inner
     **/
@@ -136,7 +122,7 @@ var Store = function() {
             "single-row temp-tile",
         "elementContent":
             makeTemperatureTile("images/kitchen.png"),
-        "internalState":
+        "state":
             0
         },
         {"elementId":
@@ -145,7 +131,7 @@ var Store = function() {
             "single-row temp-tile",
         "elementContent":
             makeTemperatureTile("images/bedroom.png"),
-        "internalState":
+        "state":
             0
         },
 		{"elementId":
@@ -154,7 +140,7 @@ var Store = function() {
             "single-row temp-tile",
         "elementContent":
             makeTemperatureTile("images/bathroom.png"),
-        "internalState":
+        "state":
             0
         }
     ];
@@ -233,17 +219,9 @@ var Store = function() {
     * Zawiera elementy menu Light.
     * @inner
     **/
-    this.lightingMenuElements = [];
-
-    /**
-    * Zawiera elementy wszystkich menu.
-    * @inner
-    **/
-    this.allMenuElements = [].concat.apply([], [
-        this.mainMenuElements,
-        this.temperatureMenuElements,
-        this.blindsMenuElements,
-        this.lightingMenuElements,
-        this.helpMenuElements
-    ]);
+    this.lightingMenuElements = [
+        LightingMenuView.makeTile("light-room-1", 0),
+        LightingMenuView.makeTile("light-room-2", 0),
+        LightingMenuView.makeTile("light-room-3", 0)
+    ];
 };

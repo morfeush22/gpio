@@ -60,23 +60,9 @@ var StartupDialogView = function(callback) {
 		valid = valid && checkRegexp(ip, /^(?=\d+\.\d+\.\d+\.\d+$)(?:(?:25[0-9]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]|[0-9])\.?){4}$/, "Wrong IP address");
 		if (valid) {
 			localStorage.setItem("ip", ip.val());
-			callLater(callback);
+			callback();
 		}
 	};
-
-	/**
-	* Wywołuje funkcję callback.
-	* @function
-	* @param {Object} callback - Funkcja wywoływana po podaniu poprawnego adresu IP serwera.
-	* @param {Object} data - Dodatkowe parametry funkcji callback.
-	**/
-	var callLater = function(callback, data) {
-        if (callback) {
-            setTimeout(function() {
-                callback(data);
-            });
-        }
-    };
 };
 
 /**

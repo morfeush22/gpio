@@ -32,8 +32,6 @@ LightingMenuView.setState = function(store, roomName, state) {
 		return item.elementId === roomName;
 	})[0].state = state);
 
-	store.update();
-
 	if (element = $("#"+roomName))
 		element.children(".cycle-slideshow").cycle("goto", state);
 };
@@ -48,8 +46,8 @@ LightingMenuView.updateView = function(store, socket) {
 	var registerLightEvents = function(item) {
 		var $item = $(item);		
 		socket.getSocket().emit("lightChange", {
-			"roomId": $item.parent().attr("id"),
-			"state": $item.next(".cycle-slideshow").data("cycle.opts").currSlide ? 0:1
+			"room": $item.parent().attr("id"),
+			"state": $item.next(".cycle-slideshow").data("cycle.opts").currSlide ? 0 : 1
 		});
 	};
 
@@ -75,13 +73,13 @@ LightingMenuView.updateView = function(store, socket) {
 
 	tileButtons.each(function() {
 		var cycleSlideshow = $(this).next(".cycle-slideshow");
-		
-		$(this).css("width", parseInt(0.6*windowWidth));
-		window.setTimeout($.proxy(function() {
+
+		window.setTimeout(function() {
+			$(this).css("width", parseInt(0.6*windowWidth));
 			var height = this.offsetHeight;
 			cycleSlideshow.css({"height": height, "width": height});
-		}, this), 0);
-	});    
+		}.bind(this), 1);
+	});
 };
 
 /**

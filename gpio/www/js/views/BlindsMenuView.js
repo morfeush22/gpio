@@ -45,11 +45,11 @@ BlindsMenuView.updateView = function() {
 
 		var windowWidth = $(window).width();
 		
-		$(this).css("width", parseInt(0.6*windowWidth));
-		window.setTimeout($.proxy(function() {
+		window.setTimeout(function() {
+			$(this).css("width", parseInt(0.6*windowWidth));
 			var height = this.offsetHeight;
 			cycleSlideshow.css({"height": height, "width": height});
-		}, this), 0);
+		}.bind(this), 1);
 	});
 };
 

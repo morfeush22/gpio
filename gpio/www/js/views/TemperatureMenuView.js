@@ -38,9 +38,7 @@ var TemperatureMenuView = function(store) {
 TemperatureMenuView.setState = function(store, roomName, state) {
 	var state = (store.temperatureMenuElements.filter(function(item) {
 		return item.elementId === roomName;
-	})[0].internalState = state);
-
-	store.update();
+	})[0].state = state);
 
 	if (element = $("#"+roomName))
 		element.children(".temp-slider").slider("value", state);
@@ -56,7 +54,7 @@ TemperatureMenuView.updateView = function(store, socket) {
 	var registerTemperatureEvent = function(item, value) {
 		var $item = $(item);
 		socket.getSocket().emit("temperatureChange", {
-			"roomId": $item.parent().attr("id"),
+			"room": $item.parent().attr("id"),
 			"state": value
 		});
 	};
@@ -78,19 +76,19 @@ TemperatureMenuView.updateView = function(store, socket) {
 		var tempSlider = $(this).prev(".temp-slider");
 		tempSlider.slider("value", store.temperatureMenuElements.filter(function(item) {
 			return item.elementId === $(self).parent().attr("id");
-		})[0].internalState);
+		})[0].state);
 
 		tempSlider.on("slidestop", function(event, ui) {
 			registerTemperatureEvent(this, ui.value);
 		});
 
 		var windowWidth = $(window).width();
-		
-		$(this).css("width", parseInt(0.6*windowWidth));
-		window.setTimeout($.proxy(function() {
+
+		window.setTimeout(function() {
+			$(this).css("width", parseInt(0.6*windowWidth));
 			var height = this.offsetHeight;
 			tempSlider.css("height", height);
-		}, this), 0);
+		}.bind(this), 1);
 	});
 };
 

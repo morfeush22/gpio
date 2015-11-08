@@ -40,11 +40,11 @@ MainMenuView.updateView = function() {
 
 		var windowWidth = $(window).width();
 		
-		$(this).css("width", parseInt(0.2*windowWidth));
 		window.setTimeout($.proxy(function() {
+			$(this).css("width", parseInt(0.2*windowWidth));
 			var height = this.offsetHeight;
 			cycleSlideshow.css({"height": height, "width": height});
-		}, this), 0);
+		}, this), 1);
 	});
 
 	$("body").find(".first-order-menu").each(function() {
