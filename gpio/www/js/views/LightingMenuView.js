@@ -78,7 +78,7 @@ LightingMenuView.updateView = function(store, socket) {
 			$(this).css("width", parseInt(0.6*windowWidth));
 			var height = this.offsetHeight;
 			cycleSlideshow.css({"height": height, "width": height});
-		}.bind(this), 1);
+		}.bind(this), 10);
 	});
 };
 

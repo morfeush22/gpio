@@ -78,7 +78,7 @@ var app = {
                 case "#main-menu":
                 default:
                     $("body").html(new MainMenuView(this.store).render().element);
-                    MainMenuView.updateView();
+                    MainMenuView.updateView(this.store);
                     break;
             }
         }

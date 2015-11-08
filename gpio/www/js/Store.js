@@ -39,6 +39,28 @@ var Store = function() {
     };
 
     /**
+    * Tworzy element będący układem zmieniających się obrazów.
+    * @function
+    * @param {string} firstImage - Ścieżka do pliku z obrazkiem.
+    * @param {string} secondImage - Ścieżka do pliku z obrazkiem.
+    * @param {string} buttonImage - Ścieżka do pliku z obrazkiem przycisku.
+    * @param {Object} descArgs - Obiekt definujący podpisy obrazków.
+    **/
+    var makeAlarmSwitchTile = function(firstImage, secondImage, descArgs) {
+        return "<div class='cycle-slideshow'\
+                 data-cycle-fx=fadeout\
+                 data-cycle-timeout=100\
+                 data-cycle-caption-plugin=caption2\
+                 data-cycle-overlay-fx-out='slideUp'\
+                 data-cycle-overlay-fx-in='slideDown'\
+                 >\
+                 <div class='cycle-overlay'></div>" +
+                 "<img src=" + firstImage + " data-cycle-title=" + descArgs.offTitle + " data-cycle-desc=" + descArgs.offDesc + ">" +
+                 "<img src=" + secondImage  + " data-cycle-title=" + descArgs.onTitle + " data-cycle-desc=" + descArgs.onDesc + ">" +
+             "</div>";
+    };
+
+    /**
     * Tworzy element będący częścią menu Temperature.
     * @function
     * @param {string} image - Ścieżka do pliku z obrazkiem.
@@ -93,14 +115,14 @@ var Store = function() {
         "elementClass":
             "single-row alarm-switch",
         "elementContent":
-            makeSwitchTile("images/off.png", "images/on.png", "images/alarm.png", {
+            makeAlarmSwitchTile("images/off.png", "images/on.png", {
                 onTitle: "\"\"",
                 onDesc: "\"\"",
                 offTitle: "\"\"",
                 offDesc: "\"\""
             }),
         "state":
-            1
+            0
         },
         {"elementId": 
             "help",

@@ -26,6 +26,9 @@ var Socket = function(store) {
 						case "temperature":
 							TemperatureMenuView.setState(store, room, state);
 							break;
+						case "alarm":
+							MainMenuView.setAlarmState(store, state);
+							break;
 					}
 				});
 			});

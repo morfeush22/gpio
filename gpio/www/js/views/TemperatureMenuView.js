@@ -88,7 +88,7 @@ TemperatureMenuView.updateView = function(store, socket) {
 			$(this).css("width", parseInt(0.6*windowWidth));
 			var height = this.offsetHeight;
 			tempSlider.css("height", height);
-		}.bind(this), 1);
+		}.bind(this), 10);
 	});
 };
 

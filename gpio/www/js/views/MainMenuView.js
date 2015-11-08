@@ -28,24 +28,15 @@ var MainMenuView = function(store) {
 * Rejestruje widok menu głównego.
 * @function
 **/
-MainMenuView.updateView = function() {
-	var elements = $("body").find(".cycle-slideshow").each(function() {
-        $(this).cycle();
-    });
+MainMenuView.updateView = function(store) {
+	if (element = $("#alarm-switch").children(".cycle-slideshow")) {
+		var state = (store.mainMenuElements.filter(function(item) {
+			return item.elementId === "alarm-switch";
+		})[0].state);
+		element.cycle();
 
-    var tileButtons = $("body").find(".tile-button");
-
-    tileButtons.each(function() {
-		var cycleSlideshow = $(this).next(".cycle-slideshow");
-
-		var windowWidth = $(window).width();
-		
-		window.setTimeout($.proxy(function() {
-			$(this).css("width", parseInt(0.2*windowWidth));
-			var height = this.offsetHeight;
-			cycleSlideshow.css({"height": height, "width": height});
-		}, this), 1);
-	});
+		state ? element.cycle("resume") : element.cycle("pause");
+	}
 
 	$("body").find(".first-order-menu").each(function() {
         $(this).css("width", parseInt(0.8*$(window).width()));
@@ -54,6 +45,23 @@ MainMenuView.updateView = function() {
     $("body").find(".main-menu-options").each(function() {
         $(this).css("width", parseInt(0.2*$(window).width()));
     });
+};
+
+/**
+* Ustawia stan elementu Alarm.
+* @function
+* @param {Object} store - Obiekt magazynu.
+* @param {Object} state - Stan.
+**/
+MainMenuView.setAlarmState = function(store, state) {
+	var state = (store.mainMenuElements.filter(function(item) {
+		return item.elementId === "alarm-switch";
+	})[0].state = state);
+
+	if (element = $("#alarm-switch")) {
+		var cycleSlideshow = element.children(".cycle-slideshow");
+		state ? cycleSlideshow.cycle("resume") : cycleSlideshow.cycle("pause");
+	}
 };
 
 /**
