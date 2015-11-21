@@ -46,7 +46,7 @@ var ws = io.of('/gpio')
 				}
 				else {
 					var distance = parseInt(data);
-					var newState = distance < 10000 ? 1 : 0;
+					var newState = distance < 20 ? 1 : 0;
 					STATES['alarm']['main-alarm'] = newState;
 					if (newState !== oldState)
 						socket.emit('sync', STATES);
