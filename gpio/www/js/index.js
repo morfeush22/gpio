@@ -15,6 +15,7 @@ var app = {
             $(window).on("hashchange", self.render.bind(self));
             $(window).on("orientationchange", self.render.bind(self));
             $(window).on("resume", self.socket.syncReq.bind(self.socket));
+            window.location.hash = "#main-menu";
         }
 
         if (!localStorage.getItem("ip")) {
