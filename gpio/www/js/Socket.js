@@ -61,6 +61,7 @@ var Socket = function(store) {
     **/
     this.syncReq = function() {
     	socket.emit("syncReq");
+    	window.location.hash = "#main-menu"
     };
 
     /**
